@@ -1,8 +1,8 @@
 # koldsleep
 koldsleep 테스트 서버
 
-### Tools
-language : Python    
-Framework : Django    
-Database : MongoDB    
+## ▶ 사용 기술     
+* SERVER : Python
+* DATABASE : MongoDB      
+* Framework : Django   
 
