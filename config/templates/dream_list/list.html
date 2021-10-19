@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load list_filter %}
+{% block content %}
+<div class="container my-3">
+    <a href="{% url 'dream_list:board_create' %}" class="btn btn-outline-secondary btn-block">게시글 등록</a>   
+    <br>
+    <table class="table table-hover table-sm">
+        <thead>
+        <tr class="text-center table-success"> 
+            <th>No.</th>           
+            <th style="width:50%">제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if dream_list %}
+        {% for board in dream_list %}
+        <tr class="text-center">
+            <td>{{ dream_list.paginator.count|sub:dream_list.start_index|sub:forloop.counter0|add:1 }}</td>
+            <td class="text-left">
+                <a href="{% url 'dream_list:detail' board.id %}">{{ board.title }}</a>                
+            </td>            
+            <td>{{ board.cdate|date:"Y-m-d" }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">등록된 글이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table> 
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if dream_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ dream_list.previous_page_number }}" href="#">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in dream_list.paginator.page_range %}
+        {% if page_number >= dream_list.number|add:-5 and page_number <= dream_list.number|add:5 %}
+            {% if page_number == dream_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if dream_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ dream_list.next_page_number }}" href="#">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+</div>
+<form id="searchForm" method="get" action="{% url 'dream_list:index' %}">    
+    <input type="hidden" id="page" name="page" value="{{ page }}">    
+</form>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $(".page-link").on('click', function() {
+            $("#page").val($(this).data("page"));
+            $("#searchForm").submit();
+        });     
+    });
+</script>
+{% endblock %}
