@@ -1,12 +1,13 @@
-
+* {
+    background: #010101;
+    text-align: center;
+}
 .wrap { 
     font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
     position: absolute;
-    width: 2092px;
-    height: 2092px;
-    left: -341px;
-    top: -419px;
-    background: #010101;
+    width: 100%;
+    height: 100%;
+
 }
 
 div.head-title {
