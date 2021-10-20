@@ -10,7 +10,7 @@ def index(request) :
     page = request.GET.get('page', 1) # page 이름으로 넘어오는 정보가 없으면 1
     dream_list = Board.objects.order_by('-cdate') # 정렬 순서를 cdate decending
     # 페이징 처리
-    paginator=Paginator(dream_list, 10) # 페이징 기준을 5개 리스트로(6개째부터 2페이지)
+    paginator=Paginator(dream_list, 10) # 페이징 기준을 10개 리스트로
     page_obj=paginator.get_page(page)
     context = {'dream_list' : page_obj }
     return render(request, 'dream_list/list.html', context)
