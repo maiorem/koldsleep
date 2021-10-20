@@ -10,7 +10,7 @@
 
 }
 
-div.head-title {
+.head-title {
 
     position: static;
     width: 274px;
@@ -41,7 +41,8 @@ div.head-title {
 
 }
 
-.btn-list {
+.btn-list,
+.icon-list {
     position: static;
     width: 60px;
     height: 32px;
@@ -71,7 +72,8 @@ div.head-title {
 
 }
 
-.btn-write {
+.btn-write,
+.icon-write {
     position: static;
     width: 92px;
     height: 32px;

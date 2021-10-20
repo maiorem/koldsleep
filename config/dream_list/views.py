@@ -1,7 +1,7 @@
-from .models import Board
+from dream_list.models import Board
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .form import BoardForm
+from dream_list.form import BoardForm
 from django.utils import timezone
 from django.core.paginator import Paginator
 
@@ -16,8 +16,8 @@ def index(request) :
     return render(request, 'dream_list/list.html', context)
 
 
-def detail(request, list_id) :
-    board = Board.objects.get(id=list_id)
+def detail(request, id) :
+    board = Board.objects.get(id=id)
     context = {'board':board}
     return render(request, 'dream_list/board_detail.html', context)
 
@@ -32,3 +32,21 @@ def board_create(request) :
     else :
         form=BoardForm()
     return render(request, 'dream_list/form.html', {'form':form})
+
+
+def board_update(request, list_id) :
+    update_board = Board.objects.get(id=list_id)
+    if request.method=='POST' :
+        update_form=BoardForm(request.POST)
+        if update_form.is_valid() :
+            board=update_form.save(commit=False) 
+            board.cdate=timezone.now()
+            board.save()
+            return redirect('dream_list:detail')
+    else :
+        update_form = { 'update_board' : update_board } 
+    return render(request, 'dream_list/update_form.html', {'form':update_form})
+
+def board_delete(request, list_id) :
+    board = Board.delete(id=list_id)
+    return render(request, 'dream_list/list.html')

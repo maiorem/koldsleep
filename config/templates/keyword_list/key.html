@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <div class="wrap">
     <div class="head-title"></div>
     <div class="btn-area">
-        <div class="btn-list"></div>
-        <div class="btn-write"></div>
+        <div class="btn-list">
+            <a href="{% url 'dream_list:index' %}" class="btn-list">
+                <svg viewBox="0 0 512 512" class="icon-list">
+                <use xlink:href="{% static 'images/List.svg' %}"></use>
+                </svg>
+                List
+            </a>
+        </div>
+        <div class="btn-write">
+            <a href="{% url 'dream_list:board_create' %}" class="btn-write">
+                <svg viewBox="0 0 512 512" class="icon-write">
+                <use xlink:href="{% static 'images/pencil.svg' %}"></use>
+                </svg>
+                Write
+            </a>
+        </div>
     </div>
     <div class="door-area">
         <div class="keywords-in-the-door">
