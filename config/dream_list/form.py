@@ -8,6 +8,6 @@ class BoardForm(forms.ModelForm) :
         labels = {
             'title' : '제목',
             'content' : '내용',
-            'writer' : '작성자',
+            'writer' : '이름',
             'password' : '비밀번호'
         }

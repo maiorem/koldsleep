@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
 
-<h1>{{board.title}}</h1>
-<div>{{board.writer}}</div>
-<div>{{board.cdate}}</div>
-<div>
-    {{board.content}}
-</div>
-<div>
-    <button>수정</button>
-    <button>삭제</button>
-</div>
+* {
+    background: #FFFFFF;
+}
 
+.list-btn {
+    left: 0%;
+    right: 52.13%;
+    top: 55.05%;
+    bottom: 0%;
+
+    background: #010101;
+    border-radius: 763.162px;
+}
+</style>
+<div class="detail-container">
+    <h3 class="dream-cdate">{{board.cdate}}</h3>
+    <h1 class="dream-title">{{board.title}}</h1>
+    <div class="dream-content">{{board.content}}</div>
+    <div class="dream-writer">{{board.writer}}</div>
+    <div class="dream-btn">
+        <button class="list-btn btn-update">수정</button>
+        <button class="list-btn btn-delete">삭제</button>
+    </div>
+</div>
 {% endblock %}
