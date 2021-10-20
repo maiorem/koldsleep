@@ -44,7 +44,7 @@ def board_update(request, list_id) :
             board.save()
             return redirect('dream_list:detail')
     else :
-        update_form = { 'update_board' : update_board } 
+        update_form = BoardForm(board=update_board, title=request.POST.get('title'), content=request.POST.get('content'), writer=request.POST.get('writer'))
     return render(request, 'dream_list/update_form.html', {'form':update_form})
 
 def board_delete(request, list_id) :
