@@ -25,7 +25,7 @@ server {
         location = /favicon.ico { access_log off; log_not_found off; }
 
         location /static/ {
-                alias /home/ubuntu/projects/koldsleep/static;
+                alias /home/ubuntu/projects/koldsleep/static/;
         }
 
         location / {
@@ -34,3 +34,29 @@ server {
         }
 }
 
+[Unit] 
+Description=gunicorn daemon 
+After=network.target   
+
+[Service] 
+User=ubuntu 
+Group=www-data 
+WorkingDirectory=/home/ubuntu/projects/koldsleep
+ExecStart=/home/ubuntu/venvs/koldsleep/bin/gunicorn --log-level debug --workers 3 --bind unix:/home/ubuntu/apps/projects/koldsleep/gunicorn.sock betweak.wsgi:application   
+
+[Install] 
+WantedBy=multi-user.target
+
+
+
+server {    
+   listen 80;  
+   server_name 3.37.173.189;
+   
+   location = /favicon.ico { access_log off; log_not_found off; }
+   location /static/ {   
+      alias /home/ubuntu/projects/koldsleep/static/;  
+   }   
+   location / {  
+      include proxy_params;  proxy_pass http://unix:/home/ubuntu/projects/koldsleep/gunicorn.sock; 
+   }
