@@ -4,15 +4,15 @@
 <div class="wrap">
     <div class="head-title"></div>
     <div class="btn-area">
-        <div class="btn-list">
+        <div class="btn-basic btn-list">
             <a href="{% url 'dream_list:index' %}" class="btn-list">
-                <img src="{% static 'images/List-white.png'%}">
+                <img src="{% static 'images/List.png'%}">
                 List
             </a>
         </div>
-        <div class="btn-write">
+        <div class="btn-basic btn-write">
             <a href="{% url 'dream_list:board_create' %}" class="btn-write">
-                <img src="{% static 'images/pencil-white.png'%}">
+                <img src="{% static 'images/pencil.png'%}">
                 Write
             </a>
         </div>
@@ -24,6 +24,4 @@
     </div>
 </div>
 
-{% endblock %}
-{% block script %}
 {% endblock %}

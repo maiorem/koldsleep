@@ -9,7 +9,7 @@
         {% if dream_list %}
         {% for board in dream_list %}
         <tr class="text-center">
-            <td>{{ dream_list.paginator.count|sub:dream_list.start_index|sub:forloop.counter0|add:1 }}</td>
+            <!--<td>{{ dream_list.paginator.count|sub:dream_list.start_index|sub:forloop.counter0|add:1 }}</td>-->
             <td class="text-left">
                 <a href="{% url 'dream_list:detail' board.id %}">{{ board.title }}</a>                
             </td>
@@ -64,7 +64,12 @@
     <!-- 페이징처리 끝 -->
 </div>
 <form id="searchForm" method="get" action="{% url 'dream_list:index' %}">    
-    <input type="hidden" id="page" name="page" value="{{ page }}">    
+    <input type="hidden" id="page" name="page" value="{{ page }}">  
+
+</form>
+<form>
+    <input type="text" id="search" name="search">
+    <input type="button" value="검색">  
 </form>
 {% endblock %}
 {% block script %}

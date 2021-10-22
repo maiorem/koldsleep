@@ -34,8 +34,9 @@ def board_create(request) :
     return render(request, 'dream_list/form.html', {'form':form})
 
 
-def board_update(request, list_id) :
-    update_board = Board.objects.get(id=list_id)
+def board_update(request, id) :
+    update_board = Board.objects.get(id=id)
+    context = {'update_board':update_board}
     if request.method=='POST' :
         update_form=BoardForm(request.POST)
         if update_form.is_valid() :
@@ -44,9 +45,9 @@ def board_update(request, list_id) :
             board.save()
             return redirect('dream_list:detail')
     else :
-        update_form = BoardForm(board=update_board, title=request.POST.get('title'), content=request.POST.get('content'), writer=request.POST.get('writer'))
-    return render(request, 'dream_list/update_form.html', {'form':update_form})
+        update_form = BoardForm()
+    return render(request, 'dream_list/update_form.html', {'form':update_form}, context)
 
-def board_delete(request, list_id) :
-    board = Board.delete(id=list_id)
+def board_delete(request, id) :
+    board = Board.delete(id=id)
     return render(request, 'dream_list/list.html')

@@ -1,5 +1,5 @@
 * {
-    background: #010101;
+    background: #FFFFFF;
     text-align: center;
 }
 .wrap { 
@@ -17,19 +17,19 @@
     height: 32px;
     left: 0px;
     top: 0px;
-    
+
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: normal;
     font-size: 40px;
     line-height: 79.2%;
     /* identical to box height, or 32px */
-    
+
     text-align: center;
     letter-spacing: -0.04em;
     text-transform: capitalize;
-    
-    color: #FFFFFF;
+
+    color: #000000;
     
     
     /* Inside Auto Layout */
@@ -48,37 +48,20 @@
     height: 32px;
     left: 40px;
     top: 0px;
-
-    font-family: Spoqa Han Sans Neo;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 40px;
-    line-height: 79.2%;
-    /* identical to box height, or 32px */
-
-    text-align: center;
-    letter-spacing: -0.04em;
-    text-transform: capitalize;
-
-    color: #FFFFFF;
-
-
-    /* Inside Auto Layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 0px 8px;
-
+    
 }
 
 .btn-write,
 .icon-write {
+    
     position: static;
     width: 92px;
     height: 32px;
     left: 40px;
     top: 0px;
+}
+
+.btn-basic {
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
@@ -91,7 +74,7 @@
     letter-spacing: -0.04em;
     text-transform: capitalize;
 
-    color: #FFFFFF;
+    color: #000000;
 
 
     /* Inside Auto Layout */
@@ -109,9 +92,10 @@
     width: 600px;
     height: 884px;
     left: 420px;
-    top: 140px;
+    top: 140.02px;
 
-    background: linear-gradient(180deg, #000000 0%, rgba(255, 255, 255, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000);
+    box-shadow: 0px 4px 80px #000000;
     border-radius: 1000px 1000px 0px 0px;
 
 }
