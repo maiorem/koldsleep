@@ -1,0 +1,35 @@
+
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/projects/koldsleep
+ExecStart=/home/ubuntu/venvs/koldsleep/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+server {
+        listen 80;
+        server_name 3.37.173.189;
+
+        charset utf-8;
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+
+        location /static/ {
+                alias /projects/koldsleep/static;
+        }
+
+        location / {
+                include proxy_params;
+                proxy_pass http://3.37.173.189:8000;
+        }
+}
+~
