@@ -6,7 +6,7 @@ app_name = 'dream_list'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:id>/', views.detail, name='detail'),
-    path('list/create/', views.board_create, name='board_create'),
-    path('list/edit/<int:id>/', views.board_update, name='board_update'),
-    path('list/delete/<int:id>', views.board_delete, name="board_delete")
+    path('create/', views.board_create, name='board_create'),
+    path('edit/<int:id>/', views.board_update, name='board_update'),
+    path('delete/<int:id>', views.board_delete, name="board_delete")
 ]

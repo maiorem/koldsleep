@@ -16,35 +16,34 @@
     border-radius: 763.162px;
 }
 
-<style>
-    #main {
-        z-index:1;
-    }
+#main {
+    z-index:1;
+}
 
-    #popEdit, #popDelete {
-        z-index:2;
-        position:absolute;
-        top:0px;
-        left:0px;
-        width:100%;
-        background-color:rgba(0,0,0,0.8);
-    }
-   
-    .popup {
-        z-index:3;
-        position:fixed;
-        text-align:center;
-        left:20%;
-        top:20%;
-        width:570px;
-        height:100px;
-        background-color:#1C1C1E;
-        border-radius: 50px;    
-    }
+#popEdit, #popDelete {
+    z-index:2;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    background-color:rgba(0,0,0,0.8);
+}
 
-    .close {
-        z-index:4;
-    }
+.popup {
+    z-index:3;
+    position:fixed;
+    text-align:center;
+    left:20%;
+    top:20%;
+    width:570px;
+    height:100px;
+    background-color:#1C1C1E;
+    border-radius: 50px;    
+}
+
+.close {
+    z-index:4;
+}
 
 </style>
 <div class="detail-container">
@@ -61,8 +60,8 @@
     <div class="popup">
         <input type="password" id="editpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <a href="javascript:" onclick="eidt({{board.id}}))">수정</a>
-        <a href="javascript:" onClick="editPop('close')">
+        <a href="javascript:" onclick="editPost({{board.id}});">수정</a>
+        <a href="javascript:" onClick="editPop('close');">
             닫기
         </a>
     </div>
@@ -71,8 +70,8 @@
     <div class="popup">
         <input type="password" id="delpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <a href="javascript:" onclick="delete({{board.id}})">삭제</a>
-        <a href="javascript:" onClick="deletePop('close')">
+        <a href="javascript:" onclick="deletePost({{board.id}});">삭제</a>
+        <a href="javascript:" onClick="deletePop('close');">
             닫기
         </a>
     <div>
@@ -106,11 +105,24 @@ function deletePop(type) {
 
 }
 
-function edit(id) {
-
+function editPost(id) {
+    if ($('#editpw').val()=="{{board.password}}") {
+        var url = "{% url 'dream_list:board_update' board.id%}";
+        document.location.href = url;
+    } else {
+        alert('비밀번호가 맞지 않습니다.');
+        window.location.reload();
+    }
 }
 
-function edit(id) {
+function deletePost(id) {
+    if ($('#delpw').val()=="{{board.password}}") {
+        var url = "{% url 'dream_list:board_delete' board.id%}";
+        document.location.href = url;
+    } else {
+        alert('비밀번호가 맞지 않습니다.');
+        window.location.reload();
+    }
 
 }
 

@@ -41,12 +41,11 @@ def board_update(request, id) :
         update_form=BoardForm(request.POST)
         if update_form.is_valid() :
             board=update_form.save(commit=False) 
-            board.cdate=timezone.now()
             board.save()
             return redirect('dream_list:detail')
     else :
         update_form = BoardForm()
-    return render(request, 'dream_list/update_form.html', {'form':update_form}, context)
+    return render(request, 'dream_list/update_form.html', {'update_form':update_form})
 
 def board_delete(request, id) :
     board = Board.delete(id=id)
