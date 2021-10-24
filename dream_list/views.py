@@ -8,11 +8,25 @@ from django.core.paginator import Paginator
 # Create your views here.
 def index(request) :
     page = request.GET.get('page', 1) # page 이름으로 넘어오는 정보가 없으면 1
-    dream_list = Board.objects.order_by('-cdate') # 정렬 순서를 cdate decending
+    query=request.GET.get('query')
+    # 검색어
+    if query :
+        dream_list = Board.objects.filter(title__contains=query).order_by('-cdate')
+    else :
+        dream_list = Board.objects.order_by('-cdate') # 정렬 순서를 cdate decending
     # 페이징 처리
     paginator=Paginator(dream_list, 10) # 페이징 기준을 10개 리스트로
     page_obj=paginator.get_page(page)
+       
     context = {'dream_list' : page_obj }
+    return render(request, 'dream_list/list.html', context)
+
+
+def result(request) :
+    query=request.GET['query']
+    if query :
+        posts = Board.objects.filter(title__contains=query)
+        context = {'dream_list' : posts }
     return render(request, 'dream_list/list.html', context)
 
 
@@ -33,8 +47,6 @@ def board_create(request) :
         form=BoardForm()
     return render(request, 'dream_list/form.html', {'form':form})
 
-def edit(request) :
-    return render(request, 'dream_list/update_form.html')
 
 def board_update(request, id) :
     update_board = get_object_or_404(Board, id=id)

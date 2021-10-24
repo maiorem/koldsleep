@@ -63,21 +63,23 @@
     </ul>
     <!-- 페이징처리 끝 -->
 </div>
-<form id="searchForm" method="get" action="{% url 'dream_list:index' %}">    
+<form id="pageForm" method="get" action="{% url 'dream_list:index' %}">    
     <input type="hidden" id="page" name="page" value="{{ page }}">  
+</form>
 
+
+<form id="searchForm" method="get" action="{% url 'dream_list:index' %}">    
+    <input type="text" id="query" name="query">
+    <input type="submit" value="검색">
 </form>
-<form>
-    <input type="text" id="search" name="search">
-    <input type="button" value="검색">  
-</form>
+
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
     $(document).ready(function(){
         $(".page-link").on('click', function() {
             $("#page").val($(this).data("page"));
-            $("#searchForm").submit();
+            $("#pageForm").submit();
         });     
     });
 </script>
