@@ -107,7 +107,7 @@ function deletePop(type) {
 
 function editPost(id) {
     if ($('#editpw').val()=="{{board.password}}") {
-        var url = "{% url 'dream_list:board_update' board.id%}";
+        var url = "{% url 'dream_list:board_update' board.id %}";
         document.location.href = url;
     } else {
         alert('비밀번호가 맞지 않습니다.');
@@ -117,7 +117,7 @@ function editPost(id) {
 
 function deletePost(id) {
     if ($('#delpw').val()=="{{board.password}}") {
-        var url = "{% url 'dream_list:board_delete' board.id%}";
+        var url = "{% url 'dream_list:board_delete' board.id %}";
         document.location.href = url;
     } else {
         alert('비밀번호가 맞지 않습니다.');
