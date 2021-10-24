@@ -53,4 +53,4 @@ def board_update(request, id) :
 def board_delete(request, id) :
     board = get_object_or_404(Board, id=id)
     board.delete()
-    return render(request, 'dream_list/list.html')
+    return redirect('dream_list:index')
