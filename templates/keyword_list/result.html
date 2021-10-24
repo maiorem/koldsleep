@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="list-container">
+    <br>
+    <table class="table table-hover table-sm">
+        <tbody>
+        {% if key_list %}
+        {% for key in key_list %}
+        <tr class="text-center">
+            <td class="text-left">
+                <a href="{% url 'dream_list:detail' key.id %}">{{ key.title }}</a>                
+            </td>
+            <td>{{ key.writer }}</td>            
+            <td>{{ key.cdate|date:"Y-m-d" }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">해당 키워드에 맞는 글이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table> 
+{% endblock %}

@@ -2,7 +2,6 @@
 {% block content %}
 {% load static %}
 <div class="wrap">
-    <div class="head-title"></div>
     <div class="btn-area">
         <div class="btn-basic btn-list">
             <a href="{% url 'dream_list:index' %}" class="btn-list">
@@ -19,9 +18,19 @@
     </div>
     <div class="door-area">
         <div class="keywords-in-the-door">
-            <div class="keyword"></div>
+        {% if key_list %}
+            {% for key in key_list %}
+                <a href="{% url 'keywordList:result' key.word %}">{{key.word}}</a>
+            {% endfor %}
+        {% endif %}
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+
+</script>
 {% endblock %}

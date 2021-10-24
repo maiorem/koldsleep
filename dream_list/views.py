@@ -22,13 +22,6 @@ def index(request) :
     return render(request, 'dream_list/list.html', context)
 
 
-def result(request) :
-    query=request.GET['query']
-    if query :
-        posts = Board.objects.filter(title__contains=query)
-        context = {'dream_list' : posts }
-    return render(request, 'dream_list/list.html', context)
-
 
 def detail(request, id) :
     board = Board.objects.get(id=id)

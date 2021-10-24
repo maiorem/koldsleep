@@ -6,8 +6,16 @@ from django.shortcuts import render, redirect
 # Create your views here.
 def keylist(request) :
     keyword_list = Keyword.objects.order_by('word')
-    return render(request, 'keyword_list/key.html')
+    context = { 'key_list' : keyword_list}
+    return render(request, 'keyword_list/key.html', context)
 
-def insert_keyword(request) :
 
-    return redirect('keywordList:keylist')   
+def result(request, word) :
+
+    key_list = Board.objects.filter(content__contains=word).order_by('-cdate')
+    context={'key_list' : key_list}
+    return render(request, 'keyword_list/result.html', context)
+
+def insertKey(request) :
+
+    return render(request, '')
