@@ -1,5 +1,5 @@
 from dream_list.models import Board
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from dream_list.form import BoardForm
 from django.utils import timezone
@@ -33,20 +33,24 @@ def board_create(request) :
         form=BoardForm()
     return render(request, 'dream_list/form.html', {'form':form})
 
+def edit(request) :
+    return render(request, 'dream_list/update_form.html')
 
 def board_update(request, id) :
-    update_board = Board.objects.get(id=id)
-    context = {'update_board':update_board}
+    update_board = get_object_or_404(Board, id=id)
     if request.method=='POST' :
-        update_form=BoardForm(request.POST)
+        update_form=BoardForm(request.POST, instance=update_board)
         if update_form.is_valid() :
             board=update_form.save(commit=False) 
             board.save()
-            return redirect('dream_list:detail')
+            return redirect('dream_list:detail', id=id)
+        else :
+            return redirect('dream_list:index')
     else :
-        update_form = BoardForm()
-    return render(request, 'dream_list/update_form.html', {'update_form':update_form})
+        update_form = BoardForm(instance=update_board)
+        return render(request, 'dream_list/update_form.html', {'form':update_form})
 
 def board_delete(request, id) :
-    board = Board.delete(id=id)
+    board = get_object_or_404(Board, id=id)
+    board.delete()
     return render(request, 'dream_list/list.html')
