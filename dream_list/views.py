@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.utils import timezone
 from django.core.paginator import Paginator
-from config.env_config import CONFIG
+from konlpy.tag import Mecab
 
 
 
@@ -35,7 +35,7 @@ def detail(request, id) :
     return render(request, 'dream_list/board_detail.html', context)
 
 def board_create(request) :
-    mecab = CONFIG.mecab()
+    mecab = Mecab()
     if request.method=='POST' :
         form=BoardForm(request.POST)
         if form.is_valid() :

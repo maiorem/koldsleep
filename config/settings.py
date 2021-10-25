@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-from config.env_config import CONFIG
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4c=29foq75@%+ix#9)+@6#jr5=@ahm-0fda$+-)3kmv@6m=xf^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = CONFIG.debug
+DEBUG = False
 
 ALLOWED_HOSTS = ['.koldsleep.com', '127.0.0.1', '3.37.173.189']
 
@@ -130,8 +129,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = CONFIG.staticfiles_dirs
-STATIC_ROOT = CONFIG.static_root
+STATICFILES_DIRS = [
+        STATIC_DIR
+    ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
