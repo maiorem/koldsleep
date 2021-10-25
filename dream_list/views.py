@@ -63,9 +63,9 @@ def board_create(request) :
             print("키워드 목록 ::", new_keywords)
             print("현재까지 저장된 모든 키워드 ::" , all_key)
             # 이미 저장되어 있으면 제외
-            if new_keywords not in all_key :
-                print("신규 키워드 저장 목록 :: ",new_keywords)
-                for keyword in new_keywords :
+            for keyword in new_keywords :
+                if keyword not in all_key :
+                    print("최종 신규 저장되는 키워드 ::", keyword)
                     Keyword(word=keyword).save()
             board.save()
             return redirect('dream_list:index')
