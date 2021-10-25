@@ -16,6 +16,3 @@ def result(request, word) :
     context={'key_list' : key_list}
     return render(request, 'keyword_list/result.html', context)
 
-def insertKey(request) :
-
-    return render(request, '')
