@@ -42,8 +42,9 @@ class Live_config:
 
     static_root = os.path.join(BASE_DIR, 'static')
 
+print('시스템 매개변수 :: ',sys.argv[1])
 
-if len(sys.argv) > 1 and sys.argv[1] =='LIVE':
-    CONFIG = Live_config()
-else:
+if sys.argv[1] =='runserver':
     CONFIG = Dev_config()
+else:
+    CONFIG = Live_config()
