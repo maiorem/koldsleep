@@ -49,7 +49,7 @@
 <div class="detail-container">
     <h3 class="dream-cdate">{{board.cdate}}</h3>
     <h1 class="dream-title">{{board.title}}</h1>
-    <div class="dream-content">{{board.content}}</div>
+    <div class="dream-content">{{board.content|linebreaksbr}}</div>
     <div class="dream-writer">{{board.writer}}</div>
     <div class="dream-btn">
         <button class="list-btn btn-update" onclick="editPop('open');">수정</button>
