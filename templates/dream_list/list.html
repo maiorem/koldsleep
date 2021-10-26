@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% load list_filter %}
+{% load static %}
 {% block content %}
+
 <div class="list-container">
-    <a href="{% url 'dream_list:board_create' %}" class="btn btn-outline-secondary btn-block">Write</a>   
+    <div class="btn-basic" style="text-align:center; height:80px;">
+        <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#000000;">
+            <img class="btn-write-out" src="{% static 'images/pencil.png'%}">
+            Write
+        </a>
+    </div>  
     <br>
     <table class="table table-hover table-sm">
         <tbody>
@@ -11,10 +18,10 @@
         <tr class="text-center">
             <!--<td>{{ dream_list.paginator.count|sub:dream_list.start_index|sub:forloop.counter0|add:1 }}</td>-->
             <td class="text-left">
-                <a href="{% url 'dream_list:detail' board.id %}">{{ board.title }}</a>                
+                <a href="{% url 'dream_list:detail' board.id %}" style="color:#000000;">{{ board.title }}</a>                
             </td>
             <td>{{ board.writer }}</td>            
-            <td>{{ board.cdate|date:"Y-m-d" }}</td>
+            <td>{{ board.cdate|date:"Y/m/d" }}</td>
         </tr>
         {% endfor %}
         {% else %}
@@ -62,7 +69,7 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-</div>
+<div class="list-search-and-page">
 <form id="pageForm" method="get" action="{% url 'dream_list:index' %}">    
     <input type="hidden" id="page" name="page" value="{{ page }}">  
 </form>
@@ -70,9 +77,10 @@
 
 <form id="searchForm" method="get" action="{% url 'dream_list:index' %}">    
     <input type="text" id="query" name="query">
-    <input type="submit" value="검색">
+    <input type="submit" class="list-btn" value="검색">
 </form>
-
+</div>
+</div>
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>

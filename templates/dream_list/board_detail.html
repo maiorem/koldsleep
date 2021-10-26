@@ -2,16 +2,6 @@
 {% block content %}
 <style>
 
-.list-btn {
-    left: 0%;
-    right: 52.13%;
-    top: 55.05%;
-    bottom: 0%;
-
-    background: #010101;
-    border-radius: 763.162px;
-}
-
 #main {
     z-index:1;
 }
@@ -52,24 +42,24 @@
         <button class="list-btn btn-delete" onclick="deletePop('open');">삭제</button>
     </div>
 </div>
-<div id="popEdit" style="display:none">   
-    <div class="popup">
+<div id="popEdit" style="width: 650px; height:400px;border-radius: 50px;display:none;">   
+    <div class="popup" style="vertical-align:middle;">
         <input type="password" id="editpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <a href="javascript:" onclick="editPost({{board.id}});">수정</a>
-        <a href="javascript:" onClick="editPop('close');">
+        <button><a href="javascript:" onclick="editPost({{board.id}});">일기 수정</a></button>
+        <button><a href="javascript:" onClick="editPop('close');">
             닫기
-        </a>
+        </a></button>
     </div>
 </div>
-<div id="popDelete" style="display:none">    
+<div id="popDelete" style="width: 650px; height:400px;border-radius: 50px;display:none;">    
     <div class="popup">
         <input type="password" id="delpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <a href="javascript:" onclick="deletePost({{board.id}});">삭제</a>
-        <a href="javascript:" onClick="deletePop('close');">
+        <button><a href="javascript:" onclick="deletePost({{board.id}});">일기 삭제</a></button>
+        <button><a href="javascript:" onClick="deletePop('close');">
             닫기
-        </a>
+        </a></button>
     <div>
 </div>
 {% endblock %}
