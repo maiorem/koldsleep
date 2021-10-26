@@ -4,14 +4,14 @@
 <div class="wrap">
     <div class="btn-area">
         <div class="btn-basic btn-list">
-            <a href="{% url 'dream_list:index' %}" class="btn-list">
+            <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#000000;">
                 <img class="btn-list-out" src="{% static 'images/List.png'%}">
                 <img class="btn-list-over" src="{% static 'images/List-white.png'%}" style="display:none;">
                 List
             </a>
         </div>
         <div class="btn-basic btn-write">
-            <a href="{% url 'dream_list:board_create' %}" class="btn-write">
+            <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#000000;">
                 <img class="btn-write-out" src="{% static 'images/pencil.png'%}">
                 <img class="btn-write-over" src="{% static 'images/pencil-white.png'%}" style="display:none;">
                 Write
@@ -22,7 +22,7 @@
         <div class="keywords-in-the-door">
         {% if key_list %}
             {% for key in key_list %}
-                <a href="{% url 'keywordList:result' key.word %}">{{key.word}}</a>
+                <a class="key-link" style="color:#FFFFFF;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a>
             {% endfor %}
         {% endif %}
         </div>
@@ -45,6 +45,9 @@ function doormouseover() {
     $('.btn-list-out').css('display', 'none');
     $('.btn-write-over').css('display', 'block');
     $('.btn-write-out').css('display', 'none');
+    $('.btn-list').css('color', '#FFFFFF');
+    $('.btn-write').css('color', '#FFFFFF');
+    $('.key-link').css('color', '#000000');
 }    
 
 function doormouseout() {
@@ -57,6 +60,9 @@ function doormouseout() {
     $('.btn-list-out').css('display', 'block');
     $('.btn-write-over').css('display', 'none');
     $('.btn-write-out').css('display', 'block');
+    $('.btn-list').css('color', '#000000');
+    $('.btn-write').css('color', '#000000');
+    $('.key-link').css('color', '#FFFFFF');
 }
 $(document).ready(function(){
     
