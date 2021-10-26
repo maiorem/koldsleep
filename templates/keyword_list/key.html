@@ -5,18 +5,20 @@
     <div class="btn-area">
         <div class="btn-basic btn-list">
             <a href="{% url 'dream_list:index' %}" class="btn-list">
-                <img src="{% static 'images/List.png'%}">
+                <img class="btn-list-out" src="{% static 'images/List.png'%}">
+                <img class="btn-list-over" src="{% static 'images/List-white.png'%}" style="display:none;">
                 List
             </a>
         </div>
         <div class="btn-basic btn-write">
             <a href="{% url 'dream_list:board_create' %}" class="btn-write">
-                <img src="{% static 'images/pencil.png'%}">
+                <img class="btn-write-out" src="{% static 'images/pencil.png'%}">
+                <img class="btn-write-over" src="{% static 'images/pencil-white.png'%}" style="display:none;">
                 Write
             </a>
         </div>
     </div>
-    <div class="door-area">
+    <div class="door-area" onmouseover="doormouseover();" onmouseout="doormouseout();">
         <div class="keywords-in-the-door">
         {% if key_list %}
             {% for key in key_list %}
@@ -31,6 +33,35 @@
 
 {% block script %}
 <script type='text/javascript'>
+
+
+function doormouseover() {
+    $('body').css('color', 'white');
+    $('body').css('backgroundColor', 'black');
+    $('.door-area').css('background', 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF)');   
+    $('.door-area').css('box-shadow', '0px 4px 80px #FFFFFF'); 
+    $('.head-title').css('color', '#FFFFFF');
+    $('.btn-list-over').css('display', 'block');
+    $('.btn-list-out').css('display', 'none');
+    $('.btn-write-over').css('display', 'block');
+    $('.btn-write-out').css('display', 'none');
+}    
+
+function doormouseout() {
+    $('body').css('color', 'black');
+    $('body').css('backgroundColor', 'white');
+    $('.door-area').css('background', 'linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000)');   
+    $('.door-area').css('box-shadow', '0px 4px 80px #000000'); 
+    $('.head-title').css('color', '#000000');
+    $('.btn-list-over').css('display', 'none');
+    $('.btn-list-out').css('display', 'block');
+    $('.btn-write-over').css('display', 'none');
+    $('.btn-write-out').css('display', 'block');
+}
+$(document).ready(function(){
+    
+});
+
 
 </script>
 {% endblock %}

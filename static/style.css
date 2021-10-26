@@ -1,4 +1,4 @@
-* {
+body {
     background: #FFFFFF;
     text-align: center;
 }
@@ -18,7 +18,7 @@
     left: 0px;
     top: 0px;
 
-    font-family: Spoqa Han Sans Neo;
+    font-family: 'Spoqa Han Sans Neo';
     font-style: normal;
     font-weight: normal;
     font-size: 40px;
