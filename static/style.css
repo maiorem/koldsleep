@@ -96,7 +96,7 @@ a {
     left: 420px;
     top: 140.02px;
 
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000);
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
     box-shadow: 0px 4px 80px #000000;
     border-radius: 1000px 1000px 0px 0px;
 
