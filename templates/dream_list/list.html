@@ -21,7 +21,7 @@
                 <a href="{% url 'dream_list:detail' board.id %}" style="color:#000000;">{{ board.title }}</a>                
             </td>
             <td>{{ board.writer }}</td>            
-            <td>{{ board.cdate|date:"Y/m/d" }}</td>
+            <td>{{ board.cdate|date:"y/m/d" }}</td>
         </tr>
         {% endfor %}
         {% else %}
