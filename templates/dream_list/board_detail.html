@@ -33,13 +33,24 @@
 
 </style>
 <div class="detail-container">
-    <h3 class="dream-cdate">{{board.cdate}}</h3>
-    <h1 class="dream-title">{{board.title}}</h1>
-    <div class="dream-content">{{board.content|linebreaksbr}}</div>
-    <div class="dream-writer">{{board.writer}}</div>
-    <div class="dream-btn">
-        <button class="list-btn btn-update" onclick="editPop('open');">수정</button>
-        <button class="list-btn btn-delete" onclick="deletePop('open');">삭제</button>
+    <div class="text-box">
+        <div class="dreams">
+            <div class="dream-cdate">{{board.cdate}}</div>
+            <br>
+            <div class="dream-title">{{board.title}}</div>
+            <br>
+            <div class="dream-content">{{board.content|linebreaksbr}}</div>
+        </div>
+        <br>
+        <br>
+        <div class="dream-user">
+            <div class="dream-writer">{{board.writer}}</div>
+            <br>
+            <div class="dream-btn">
+                <button class="list-btn btn-update" onclick="editPop('open');">수정</button>
+                <button class="list-btn btn-delete" onclick="deletePop('open');">삭제</button>
+            </div>
+        </div>
     </div>
 </div>
 <div id="popEdit" style="width: 650px; height:400px;border-radius: 50px;display:none;">   

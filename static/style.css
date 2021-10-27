@@ -233,17 +233,40 @@ body {
 }
 
 .detail-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 40px;
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
 
-    position: absolute;
+.text-box {
+    padding: 40px;
     width: 656px;
-    height: 1576px;
-    left: 392px;
-    top: 100px;
+    display: inline-block;
+    margin: 0 auto;
 
     background: #F3F3F7;;
     border-radius: 50px;
+}
+
+.dreams {
+    text-align: left;
+}
+
+.dream-cdate{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.dream-title {
+    font-size: 32px;
+}
+
+.dream-content {
+    font-size: 20px;
+}
+
+.dream-writer {
+    font-size: 24px;
 }
