@@ -114,10 +114,16 @@ body {
     position: absolute;
     width: 100%;
     height: 630px;
-    top: 135px;
+    top: 50px;
     text-align: center;
 
 }
+
+.list-on-list {
+    transform: rotate(180deg);
+    margin-left: 20%;
+}
+
 .pagination>li>a, .pagination>li>span {
     border: none !important;
     background-color: #FFFFFF;
