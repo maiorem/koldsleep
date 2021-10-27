@@ -31,6 +31,7 @@ def index(request) :
 
 def detail(request, id) :
     board = Board.objects.get(id=id)
+    board.cdate = board.cdate.strftime('%Y년 %m월 %d일')
     context = {'board':board}
     return render(request, 'dream_list/board_detail.html', context)
 
@@ -40,7 +41,7 @@ def board_create(request) :
         form=BoardForm(request.POST)
         if form.is_valid() :
             board=form.save(commit=False) # 저장은 하되 커밋은 하지 말 것.
-
+            
             # 키워드 저장
             new_text = request.POST['content']
             print("신규 텍스트 :: ", new_text)
