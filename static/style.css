@@ -199,6 +199,7 @@ body {
     background: #1C1C1E;
     width: 60%; 
     left: 30px;
+    bottom: 0;
 }
 
 .writer-name, .writer-pw {
@@ -209,7 +210,7 @@ body {
 
 .form-btn {
     position:absolute;
-    bottom: 30px;
+    bottom: 0;
     right: 20px;
     width: 130px;
     height: 76px;
