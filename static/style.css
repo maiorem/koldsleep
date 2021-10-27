@@ -143,7 +143,7 @@ body {
 }
 
 .form-container {
-    top: 80px;
+    top: 50px;
     position: relative;
     text-align: center;
 
@@ -152,13 +152,25 @@ body {
 .form-content {
 
     margin: 0 auto;
-    width: 650px;
-    height: 776px;
-    background: #1C1C1E;
+    width: 700px;
+    height: 850px;
+    background-color: #1C1C1E;
     border-radius: 50px;
+    text-align: center;
+    z-index: 1;
 }
 .form-contents {
     height: 600px;
+    resize: none;
+
+}
+
+.post-form {
+    top: 30px;
+    position: relative;
+    width: 675px;
+    margin: 0 auto;
+    background-color: #1C1C1E;
 }
 
 .form-title {
@@ -166,18 +178,46 @@ body {
 }
 
 .dream-form {
-    width:100%; 
-    background: #000000; 
+    border: none;
+    margin: 0 auto;
+    width:90%; 
+    background: #1C1C1E;
     color:#FFFFFF;
     font-size: 24px;
 }
 
-.writer-name, .writer-pw {
-    width: 70%;
+.form-footer {
+    background: #1C1C1E;
+    height: 100px;
+    width:90%; 
+    margin: 0 auto;
 }
 
-.form-control {
-    background: #1C1C1E !important;
+.form-user-area {
+    display: inline;
+    position: absolute;
+    background: #1C1C1E;
+    width: 60%; 
+    left: 30px;
+}
+
+.writer-name, .writer-pw {
+    position: relative;
+    width: 100%;     
+}
+
+
+.form-btn {
+    position:absolute;
+    bottom: 30px;
+    right: 20px;
+    width: 130px;
+    height: 76px;
+    background: #FFFFFF;
+    border-radius: 1000px;
+    font-weight: bold;
+    font-size: 24px;
+
 }
 
 .detail-container {
