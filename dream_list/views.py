@@ -40,7 +40,6 @@ def board_create(request) :
         form=BoardForm(request.POST)
         if form.is_valid() :
             board=form.save(commit=False) # 저장은 하되 커밋은 하지 말 것.
-            board.cdate=timezone.now()
 
             # 키워드 저장
             new_text = request.POST['content']
