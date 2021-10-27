@@ -13,13 +13,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!--제이쿼리-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Zepto -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/zepto@1.2.0/dist/zepto.js,npm/zepto@1.2.0/src/fx.js?ver=5.3.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
     <!--부트스트랩js-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
     <script src="{% static 'main.js' %}"></script>
 </head>
 <body>
 <div class="wrap">
-<div class="head-title">Dream Network</div>
+<a href="{% url 'keywordList:keylist' %}" class="headline"><div class="head-title"><span>Dream Network  </span></div></a>
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
@@ -31,4 +34,40 @@
 {% endblock %}
 <!-- 자바스크립트 End -->
 </body>
+<script>
+$(document).ready(function(){
+    
+Zepto(function($) {
+  $(window).on('load', function() {
+    $.each($(".head-title"), function(index, item) {
+      const wrapper = $("<div />", { class:"head-title-wrapper"});
+      const roller = $(item);
+      roller.append(wrapper);
+      const span = roller.find('span').first();
+      wrapper.append(span);
+  
+      const span_width = span.get(0).offsetWidth;
+      const max_width = roller.width() + span_width;
+      let inner_width = span_width;
+
+      while(max_width > inner_width) {
+        wrapper.append(span.clone());
+        inner_width += span_width;
+      }
+      
+      anime({
+        targets: wrapper.get(0),
+        translateX: {
+          value: '-=' + span_width + 'px',
+          duration: 3000
+        },
+        loop: true,
+        easing: 'linear'
+      });
+    });
+  })
+});
+});
+
+</script>
 </html>
