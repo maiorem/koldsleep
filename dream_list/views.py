@@ -17,9 +17,9 @@ def index(request) :
     query=request.GET.get('query')
     # 검색어
     if query :
-        dream_list = Board.objects.filter(title__contains=query).order_by('-cdate')
+        dream_list = Board.objects.filter(title__contains=query).order_by('-id')
     else :
-        dream_list = Board.objects.order_by('-cdate') # 정렬 순서를 cdate decending
+        dream_list = Board.objects.order_by('-id') # 정렬 순서를 cdate decending
     # 페이징 처리
     paginator=Paginator(dream_list, 10) # 페이징 기준을 10개 리스트로
     page_obj=paginator.get_page(page)
