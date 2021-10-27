@@ -12,7 +12,7 @@ def keylist(request) :
 
 def result(request, word) :
 
-    key_list = Board.objects.filter(content__contains=word).order_by('-cdate')
+    key_list = Board.objects.filter(content__contains=word).order_by('-id')
     context={'key_list' : key_list}
     return render(request, 'keyword_list/result.html', context)
 
