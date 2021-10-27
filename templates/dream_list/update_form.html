@@ -16,19 +16,19 @@
         {% endif %}
         <!-- 오류표시 End -->
         <span>
-        <input type="date" class="dream-form form-date" name="cdate" id="cdate">
+        <input type="date" class="dream-form form-date" name="cdate" id="cdate" required>
         </span class="format-date">
         <input type="text" class="dream-form form-title" name="title" id="title" placeholder="제목"
-                   value="{{ form.title.value|default_if_none:'' }}">
+                   value="{{ form.title.value|default_if_none:'' }}" required>
         <textarea class="dream-form form-contents" name="content" placeholder="내용"
-                      id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+                      id="content" rows="10" required>{{ form.content.value|default_if_none:'' }}</textarea>
                       
         <div class="form-footer">
         <div class="form-user-area">
         <input type="text" class="dream-form writer-name" name="writer" id="writer" placeholder="이름"
-                   value="{{ form.writer.value|default_if_none:'' }}" maxlength='10'>
+                   value="{{ form.writer.value|default_if_none:'' }}" maxlength='10' required>
         <input type="password" class="dream-form writer-pw" name="password" id="password" placeholder="비밀번호"
-                   value="{{ form.password.value|default_if_none:'' }}">
+                   value="{{ form.password.value|default_if_none:'' }}" required>
         </div>
         <button type="submit" class="form-btn">올리기</button>
         </div>
