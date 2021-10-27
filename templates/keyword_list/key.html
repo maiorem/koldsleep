@@ -11,16 +11,26 @@ body {
 </style>
 
 <div class="btn-area">
-    <div class="btn-basic btn-basic-list">
+    <div class="btn-basic btn-right-line btn-basic-list basic-list-out">
         <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#FFFFFF;">
-            <img class="btn-list-out" src="{% static 'images/List.png'%}" style="display:none;">
             <img class="btn-list-over" src="{% static 'images/List-white.png'%}">
             List
         </a>
     </div>
-    <div class="btn-basic btn-basic-write">
+    <div class="btn-basic btn-right-line btn-basic-write basic-write-over" style="display:none;">
+        <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#000000;">
+            <img class="btn-write-out" src="{% static 'images/pencil.png'%}">
+            Write
+        </a>
+    </div>
+    <div class="btn-basic btn-left-line btn-basic-list basic-list-over"  style="display:none;">
+        <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#000000;">
+            <img class="btn-list-out" src="{% static 'images/List.png'%}">
+            List
+        </a>
+    </div>
+    <div class="btn-basic btn-left-line btn-basic-write basic-write-out">
         <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#FFFFFF;">
-            <img class="btn-write-out" src="{% static 'images/pencil.png'%}"  style="display:none;">
             <img class="btn-write-over" src="{% static 'images/pencil-white.png'%}">
             Write
         </a>
@@ -50,10 +60,10 @@ function doormouseover() {
     $('.door-area').css('background', 'linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000)');   
     $('.door-area').css('box-shadow', '0px 4px 80px #000000'); 
     $('.head-title').css('color', '#000000');
-    $('.btn-list-over').css('display', 'none');
-    $('.btn-list-out').css('display', 'inline');
-    $('.btn-write-over').css('display', 'none');
-    $('.btn-write-out').css('display', 'inline');
+    $('.basic-list-out').css('display', 'none');
+    $('.basic-list-over').css('display', 'inline');
+    $('.basic-write-out').css('display', 'none');
+    $('.basic-write-over').css('display', 'inline');
     $('.btn-list').css('color', '#000000');
     $('.btn-write').css('color', '#000000');
     $('.key-link').css('color', '#FFFFFF');
@@ -65,10 +75,10 @@ function doormouseout() {
     $('.door-area').css('background', 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF)');   
     $('.door-area').css('box-shadow', '0px 4px 80px #FFFFFF'); 
     $('.head-title').css('color', '#FFFFFF');
-    $('.btn-list-over').css('display', 'inline');
-    $('.btn-list-out').css('display', 'none');
-    $('.btn-write-over').css('display', 'inline');
-    $('.btn-write-out').css('display', 'none');
+    $('.basic-list-out').css('display', 'inline');
+    $('.basic-list-over').css('display', 'none');
+    $('.basic-write-out').css('display', 'inline');
+    $('.basic-write-over').css('display', 'none');
     $('.btn-list').css('color', '#FFFFFF');
     $('.btn-write').css('color', '#FFFFFF');
     $('.key-link').css('color', '#000000');
