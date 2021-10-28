@@ -347,5 +347,11 @@ body {
     .pagination { margin-top: 0 !important; margin-bottom: 20px !important;}
     .page-link {font-size: 20px;}
     .list-search-and-page { bottom: 20px;}
+
+    .detail-container {height: auto;}
+    .text-box { width: 100%; height: auto;}
+    .popup { width: 100vw; height: 75vw;}
+    #editpw, #delpw {font-size: 20px;}
+    #editPost, #deletePost { width: 100px; height: 50px; font-size: 15px;}
 }
 
