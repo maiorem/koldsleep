@@ -328,7 +328,6 @@ body {
     .door-area {width: 100%;}
     .keywords-in-the-door {width: 100%;}
     .btn-left-line { margin-left: 20%; }
-    .headline {display: none;}
     .form-container {width: 100vw; height: 100vh; top: 0;}
     .form-content {width: 100vw; height: 100vh; background-color: #FFFFFF;}
     .post-form {width: 90%; height: 100vh; background-color: #FFFFFF; top: 10px; overflow: scroll;}
