@@ -321,3 +321,22 @@ body {
     top: 15px;
     right: 15px;
 }
+
+
+@media (max-width: 600px) {
+
+    .door-area {width: 100%;}
+    .keywords-in-the-door {width: 100%;}
+    .btn-left-line { margin-left: 20%; }
+    .headline {display: none;}
+    .form-container {width: 100vw; height: 100vh; top: 0;}
+    .form-content {width: 100vw; height: 100vh; background-color: #FFFFFF;}
+    .post-form {width: 90%; height: 100vh; background-color: #FFFFFF; top: 10px; overflow: scroll;}
+    .dream-form { width : 100%; background-color: #FFFFFF; color: #1C1C1E;} 
+    .form-date {color: #010101;}
+    .form-contents {height: auto;}
+    .form-footer { position: absolute; width : 100%; background-color: #FFFFFF; bottom: 20px;}
+    .form-user-area { left: 5px; bottom: auto;}
+    .form-btn {background-color: #1C1C1E; color: #FFFFFF;  bottom: auto;}
+}
+
