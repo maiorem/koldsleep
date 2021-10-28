@@ -335,7 +335,7 @@ body {
     .post-form {width: 90%; height: 100vh; background-color: #FFFFFF; top: 10px;}
     .form-main { position:absolute;  height: 60%; overflow: auto;}
     .dream-form { width : 100%; background-color: #FFFFFF; color: #1C1C1E; font-size: 18px;} 
-    .form-date {color: #010101;}
+    .form-date {color: #010101; text-align:left;}
     .form-title {font-size: 24px !important;} 
     .form-contents {height: 100%; overflow-y: hidden;}
     .form-footer { position: fixed; width : 100%; background-color: #FFFFFF; left: 0;bottom: 0;}
