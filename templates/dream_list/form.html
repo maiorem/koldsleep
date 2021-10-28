@@ -24,6 +24,7 @@
             </div>
         {% endif %}
         <!-- 오류표시 End -->
+        <div class="form-main">
         <span>
         <input type="date" class="dream-form form-date" name="cdate" id="cdate" required>
         </span class="format-date">
@@ -31,7 +32,7 @@
                    value="{{ form.title.value|default_if_none:'' }}" required>
         <textarea class="dream-form form-contents" name="content" placeholder="내용"
                       id="content" rows="10" required>{{ form.content.value|default_if_none:'' }}</textarea>
-                      
+        </div>              
         <div class="form-footer">
         <div class="form-user-area">
         <input type="text" class="dream-form writer-name" name="writer" id="writer" placeholder="이름"
