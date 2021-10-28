@@ -34,7 +34,7 @@
         <input type="text" class="dream-form writer-name" name="writer" id="writer" placeholder="이름"
                    value="{{ form.writer.value|default_if_none:'' }}" maxlength='10' required>
         <input type="password" class="dream-form writer-pw" name="password" id="password" placeholder="비밀번호"
-                   value="{{ form.password.value|default_if_none:'' }}" required>
+                   value="{{ form.password.value|default_if_none:'' }}" style="ime-mode:disabled;" required>
         </div>
         <button type="submit" class="form-btn">올리기</button>
         </div>
