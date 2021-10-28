@@ -2,7 +2,11 @@
 {% load list_filter %}
 {% load static %}
 {% block content %}
-
+<style>
+@media (max-width: 600px) {
+    .btn-basic {top:100px;}
+}
+</style>
 <div class="list-container">
     <div class="btn-basic list-on-list">
         <img class="btn-list-over" src="{% static 'images/List.png'%}">
