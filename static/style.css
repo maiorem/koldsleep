@@ -334,16 +334,17 @@ body {
     .form-content {position: absolute; width: 100vw; height: 100vh; background-color: #FFFFFF; }
     .post-form {width: 90%; height: 100vh; background-color: #FFFFFF; top: 10px;}
     .form-main { position:absolute;  height: 60%; overflow: auto;}
-    .dream-form { width : 100%; background-color: #FFFFFF; color: #1C1C1E;} 
+    .dream-form { width : 100%; background-color: #FFFFFF; color: #1C1C1E; font-size: 18px;} 
     .form-date {color: #010101;}
+    .form-title {font-size: 24px !important;} 
     .form-contents {height: 100%; overflow-y: hidden;}
     .form-footer { position: fixed; width : 100%; background-color: #FFFFFF; left: 0;bottom: 0;}
-    .form-user-area { top: 10px; bottom: auto;}
-    .form-btn {background-color: #1C1C1E; color: #FFFFFF; top: 10px;bottom: auto; right: 10%;}
+    .form-user-area { top: 10px; bottom: auto; left: 10px;} 
+    .form-btn {background-color: #1C1C1E; color: #FFFFFF; top: 20px;bottom: auto; right: 5%; width: 100px; height: 50px; font-size: 15px;}
 
-    .table {width: 100%; font-size: 14px; }
-    .list-container { width: 100vw; height: auto;}
-    .list-on-list {margin-left: 50%;}
+    .table {width: 100% !important; font-size: 14px; }
+    .list-container { width: 100%; height: auto;}
+    .list-on-list {margin-left: 30%;}
     .pagination { margin-top: 0 !important; margin-bottom: 20px !important;}
     .page-link {font-size: 20px;}
     .list-search-and-page { bottom: 20px;}
@@ -351,6 +352,7 @@ body {
     .detail-container {height: auto;}
     .text-box { width: 100%; height: auto;}
     .popup { width: 100vw; height: 75vw;}
+    .list-btn {font-size: 14px;}
     #editpw, #delpw {font-size: 20px;}
     #editPost, #deletePost { width: 100px; height: 50px; font-size: 15px;}
 }
