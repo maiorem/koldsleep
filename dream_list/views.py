@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.utils import timezone
 from django.core.paginator import Paginator
-from eunjeon import Mecab
+from konlpy.tag import Mecab
 
 
 
