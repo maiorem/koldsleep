@@ -2,6 +2,7 @@ from keywordList.models import Keyword
 from dream_list.models import Board
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 
 # Create your views here.
 def keylist(request) :
@@ -11,8 +12,8 @@ def keylist(request) :
 
 
 def result(request, word) :
-
     key_list = Board.objects.filter(content__contains=word).order_by('-id')
-    context={'key_list' : key_list}
+
+    context = {'key_list' : key_list, 'word' : word }
     return render(request, 'keyword_list/result.html', context)
 

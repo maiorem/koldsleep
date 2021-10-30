@@ -3,7 +3,9 @@
 
 <div class="list-container" style="top: 100px;">
     <div class="btn-basic" style="text-align:center; height:80px;">
-        키워드
+        {% if word %}
+            {{word}}
+        {% endif %}
     </div>  
     <br>
     <table class="table table-hover table-sm">
