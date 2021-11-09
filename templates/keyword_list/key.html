@@ -41,7 +41,7 @@ body {
         <div class="keywords-in-the-door">
         {% if key_list %}
             {% for key in key_list %}
-                <span  style="font-size: 15px !important;"><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></span>
+                <span  style="font-size: 18px !important;"><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></span>
             {% endfor %}
         {% endif %}
         </div>

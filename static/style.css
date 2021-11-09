@@ -38,7 +38,6 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin: 0px 20px;
 
 }
 
@@ -50,7 +49,7 @@ body {
 
     width: 246px;
     height: 42px;
-    background: #E1DFDE;
+    background: #F5F5F5;
     color: #1C1C1E;
     border: 0.7647px solid #FFFFFF;
     box-sizing: border-box;
@@ -97,7 +96,7 @@ body {
     top: 200px;
     display: inline-block;
     background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
-    box-shadow: 0px 4px 80px #FFFFFF;
+    /* box-shadow: 0px 4px 80px #FFFFFF; */
     border-radius: 1000px 1000px 0px 0px;
     
 }
@@ -322,10 +321,20 @@ body {
     right: 15px;
 }
 
-input[type="text"]:focus, input[type="text"]:hover, input[type="text"]:active, button:focus, button:hover, button:active, textarea:focus, textarea:hover, textarea:active {
+input[type='submit'], button {
+    border: 0;
+    outline: 0;
+}
+
+input[type="text"]:focus, input[type="text"]:hover, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:hover, input[type="password"]:active, button:focus, button:hover, button:active, textarea:focus, textarea:hover, textarea:active {
     outline: none;
     box-shadow: none;
 }
+
+.table>tbody>tr>td {
+    padding: 16px 0 16px 0 !important;
+}
+
 
 @media (max-width: 600px) {
 
