@@ -13,25 +13,25 @@ body {
 <div class="btn-area">
     <div class="btn-basic btn-right-line btn-basic-list basic-list-out">
         <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#FFFFFF;">
-            <img class="btn-list-over" src="{% static 'images/List-white.png'%}">
+            <img class="btn-list-over" src="{% static 'images/List-white.svg'%}">
             List
         </a>
     </div>
     <div class="btn-basic btn-right-line btn-basic-write basic-write-over" style="display:none;">
         <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#000000;">
-            <img class="btn-write-out" src="{% static 'images/pencil.png'%}">
+            <img class="btn-write-out" src="{% static 'images/pencil.svg'%}">
             Write
         </a>
     </div>
     <div class="btn-basic btn-left-line btn-basic-list basic-list-over"  style="display:none;">
         <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#000000;">
-            <img class="btn-list-out" src="{% static 'images/List.png'%}">
+            <img class="btn-list-out" src="{% static 'images/List.svg'%}">
             List
         </a>
     </div>
     <div class="btn-basic btn-left-line btn-basic-write basic-write-out">
         <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#FFFFFF;">
-            <img class="btn-write-over" src="{% static 'images/pencil-white.png'%}">
+            <img class="btn-write-over" src="{% static 'images/pencil-white.svg'%}">
             Write
         </a>
     </div>
@@ -41,7 +41,7 @@ body {
         <div class="keywords-in-the-door">
         {% if key_list %}
             {% for key in key_list %}
-                <span  style="font-size: 18px !important;"><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></span>
+                <span  style="font-size: 18px !important;"><a class="key-link" style="color:#000000; margin-right: 20px;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></span>
             {% endfor %}
         {% endif %}
         </div>
