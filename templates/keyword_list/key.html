@@ -38,13 +38,19 @@ body {
 </div>
 <div class="container-box">
     <div class="door-area" onmouseover="doormouseover();" onmouseout="doormouseout();">
-        <div class="keywords-in-the-door">
+        <table class="keywords-in-the-door" style="overflow:scroll;">
         {% if key_list %}
             {% for key in key_list %}
-                <span  style="font-size: 18px !important;"><a class="key-link" style="color:#000000; margin-right: 20px;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></span>
+                {% if forloop.counter0|divisibleby:6 %}
+                <tr>
+                {% endif %}
+                <td style="font-size: 18px !important; padding-bottom: 17px !important;"><a class="key-link" style="color:#000000; margin-right: 20px;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></td>
+                {% if forloop.counter|divisibleby:6 %}
+                </tr>
+                {% endif %}
             {% endfor %}
         {% endif %}
-        </div>
+        </table>
     </div>
 </div>
 
