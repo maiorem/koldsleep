@@ -97,6 +97,12 @@ body {
     display: inline-block;
     background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
     border-radius: 1000px 1000px 0px 0px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.door-area::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
 
 .keywords-in-the-door {
@@ -104,7 +110,6 @@ body {
     bottom: 10px;
     width: 600px;
     top: 50%;
-    overflow-x: hidden;
 }
 
 .list-container {
@@ -342,7 +347,8 @@ input[type="text"]:focus, input[type="text"]:hover, input[type="text"]:active, i
 @media (max-width: 600px) {
 
     .door-area {width: 100%;}
-    .keywords-in-the-door {width: 100%;}
+    .keywords-in-the-door {width: 100%; }
+    .keywords-in-the-door>tbody>tr>td {font-size: 14px !important;}
     .btn-left-line { margin-left: 20%; }
     .wrap {width: 100vw; height: 100vh;}
 
