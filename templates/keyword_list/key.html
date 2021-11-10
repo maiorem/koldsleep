@@ -41,11 +41,11 @@ body {
         <table class="keywords-in-the-door" style="table-layout: fixed;">
         {% if key_list %}
             {% for key in key_list %}
-                {% if forloop.counter0|divisibleby:5 %}
+                {% if forloop.counter0|divisibleby:9 %}
                 <tr>
                 {% endif %}
                 <td style="font-size: 18px !important; padding-bottom: 17px !important; "><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></td>
-                {% if forloop.counter|divisibleby:5 %}
+                {% if forloop.counter|divisibleby:9 %}
                 </tr>
                 {% endif %}
             {% endfor %}
@@ -89,8 +89,18 @@ function doormouseout() {
     $('.key-link').css('color', '#000000');
 }
 
+// 모바일 감지 이벤트
+function Mobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 $(document).ready(function(){
-    
+    if(Mobile()) {
+        var key_table = 
+        
+        $('.keywords-in-the-door').html(key_table);
+        
+    }
 });
 
 
