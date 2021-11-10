@@ -38,13 +38,13 @@ body {
 </div>
 <div class="container-box">
     <div class="door-area" onmouseover="doormouseover();" onmouseout="doormouseout();">
-        <table class="keywords-in-the-door">
+        <table class="keywords-in-the-door" style="table-layout: fixed;">
         {% if key_list %}
             {% for key in key_list %}
                 {% if forloop.counter0|divisibleby:5 %}
                 <tr>
                 {% endif %}
-                <td style="font-size: 18px !important; padding-bottom: 17px !important;"><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></td>
+                <td style="font-size: 18px !important; padding-bottom: 17px !important; "><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></td>
                 {% if forloop.counter|divisibleby:5 %}
                 </tr>
                 {% endif %}
