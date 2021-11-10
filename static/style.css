@@ -136,8 +136,8 @@ body {
 .list-btn {
     left: 0%;
     right: 52.13%;
-    width: 70px;
-    height: 38px;
+    width: 90px;
+    height: 49px;
 
     background: #010101;
     color: #FFFFFF;
@@ -173,7 +173,7 @@ body {
     z-index: 1;
 }
 .form-contents {
-    height: 600px;
+    height: 540px;
     resize: none;
 
 }
@@ -197,6 +197,7 @@ body {
     background: #1C1C1E;
     color:#FFFFFF;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .form-footer {
@@ -223,8 +224,8 @@ body {
 
 .form-btn {
     position:absolute;
-    bottom: 0;
-    right: 20px;
+    bottom: 25px;
+    right: 40px;
     width: 130px;
     height: 76px;
     background: #FFFFFF;
@@ -267,6 +268,7 @@ body {
 
 .dream-content {
     font-size: 20px;
+    line-height: 170%;
 }
 
 .dream-writer {
@@ -364,10 +366,10 @@ input[type="text"]:focus, input[type="text"]:hover, input[type="text"]:active, i
         -webkit-border-radius: 0;
     }
 
-    .detail-container {height: auto;}
+    .detail-container {height: auto; top:0;}
     .text-box { width: 100%; height: auto;}
     .popup { width: 100vw; height: 75vw;}
-    .list-btn {font-size: 14px;}
+    .list-btn {font-size: 18px;}
     #editpw, #delpw {font-size: 20px;}
     #editPost, #deletePost { width: 100px; height: 50px; font-size: 15px;}
 }
