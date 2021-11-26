@@ -9,6 +9,7 @@ class Board(models.Model) :
     writer = models.CharField(max_length=10)
     password = models.CharField(max_length=20)
     cdate = models.DateTimeField()
+    isVisible = models.CharField(max_length=10, default='true')
 
     @property
     def cdate_korean_time(self):
