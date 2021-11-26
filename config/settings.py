@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'dreamNetwork',
         'USER' : 'maiorem',
         'PASSWORD' : 'Enfant21878',
