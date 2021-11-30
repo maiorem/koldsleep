@@ -76,8 +76,17 @@ def board_create(request) :
     return render(request, 'dream_list/form.html', {'form':form})
 
 
-def board_update(request, id) :
+def to_edit_form(request, id) :
     if request.method=='POST' :
+        update_board = get_object_or_404(Board, id=id)
+        update_form = BoardForm(instance=update_board)
+        return render(request, 'dream_list/update_form.html', {'form':update_form, 'id':id})
+    else :
+        return redirect('dream_list:index')
+
+def board_update(request) :
+    if request.method=='POST' :
+        id = request.POST['id']
         update_board = get_object_or_404(Board, id=id)
         update_form=BoardForm(request.POST, instance=update_board)
         if update_form.is_valid() :
@@ -88,15 +97,6 @@ def board_update(request, id) :
             return redirect('dream_list:index')
     else :
         return redirect('dream_list:index')
-
-def to_edit_form(request, id) :
-    if request.method=='POST' :
-        update_board = get_object_or_404(Board, id=id)
-        update_form = BoardForm(instance=update_board)
-        return render(request, 'dream_list/update_form.html', {'form':update_form})
-    else :
-        return redirect('dream_list:index')
-        
 
 
 def board_delete(request, id) :

@@ -97,7 +97,7 @@ function deletePop(type) {
 
 function editPost(id) {
     if ($('#editpw').val()=="{{board.password}}") {
-        var editForm = $('editForm');
+        var editForm = $('#editForm');
         var url = "{% url 'dream_list:to_edit_form' board.id %}";
         editForm.attr('action', url);
         editForm.attr('method', 'POST');

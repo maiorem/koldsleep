@@ -7,7 +7,7 @@
 </style>
 <div class="form-container">
     <div class="form-content">
-    <form method="post" class="post-form my-3">
+    <form method="post" class="post-form my-3" action="{% url 'dream_list:board_update' %}">
         {% csrf_token %}
         <!-- 오류표시 Start -->
         {% if form.errors %}
@@ -22,6 +22,7 @@
         {% endif %}
         <!-- 오류표시 End -->
         <span>
+        <input type="text" name="id" value="{{ id }}">
         <input type="date" class="dream-form form-date" name="cdate" id="cdate" required>
         </span class="format-date">
         <input type="text" class="dream-form form-title" name="title" id="title" placeholder="제목"
