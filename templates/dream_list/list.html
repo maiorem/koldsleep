@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{% if messages %}
+    {% for message in messages %}
+    <script>
+        alert('{{message.message}}');
+    </script>
+    {% endfor %}
+{% endif %}
 {% load list_filter %}
 {% load static %}
 {% block content %}

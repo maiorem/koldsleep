@@ -48,17 +48,23 @@
     <div class="popup" style="vertical-align:middle;">
         <input type="password" id="editpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <button id="editPost"><a href="javascript:" onclick="editPost({{board.id}});" style="color: #27272A !important;">일기 수정</a></button>
-        <button class="close-btn"><a href="javascript:" onClick="editPop('close');" style="color: #FFFFFF !important;">x</a></button>
+        <form id="editForm">
+            {% csrf_token %}
+            <button id="editPost"><a href="javascript:" onclick="editPost({{board.id}});" style="color: #27272A !important;">일기 수정</a></button>
+            <button class="close-btn"><a href="javascript:" onClick="editPop('close');" style="color: #FFFFFF !important;">x</a></button>
+        </form>  
     </div>
 </div>
 <div id="popDelete" style="display:none;">    
     <div class="popup">
         <input type="password" id="delpw" placeholder="비밀번호를 입력하세요">
         <br>
-        <button id="deletePost"><a href="javascript:" onclick="deletePost({{board.id}});" style="color: #27272A !important;">일기 삭제</a></button>
-        <button class="close-btn"><a href="javascript:" onClick="deletePop('close');" style="color: #FFFFFF !important;">x</a></button>
-    <div>
+        <form id="deleteForm">
+            {% csrf_token %}
+            <button id="deletePost"><a href="javascript:" onclick="deletePost({{board.id}});" style="color: #27272A !important;">일기 삭제</a></button>
+            <button class="close-btn"><a href="javascript:" onClick="deletePop('close');" style="color: #FFFFFF !important;">x</a></button>
+        </form>   
+    </div>
 </div>
 {% endblock %}
 {% block script %}
@@ -91,8 +97,11 @@ function deletePop(type) {
 
 function editPost(id) {
     if ($('#editpw').val()=="{{board.password}}") {
-        var url = "{% url 'dream_list:board_update' board.id %}";
-        document.location.href = url;
+        var editForm = $('editForm');
+        var url = "{% url 'dream_list:to_edit_form' board.id %}";
+        editForm.attr('action', url);
+        editForm.attr('method', 'POST');
+        editForm.submit();
     } else {
         alert('비밀번호가 맞지 않습니다.');
         window.location.reload();
@@ -101,8 +110,11 @@ function editPost(id) {
 
 function deletePost(id) {
     if ($('#delpw').val()=="{{board.password}}") {
+        var delform = $('#deleteForm');
         var url = "{% url 'dream_list:board_delete' board.id %}";
-        document.location.href = url;
+        delform.attr('action', url);
+        delform.attr('method', 'POST');
+        delform.submit();
     } else {
         alert('비밀번호가 맞지 않습니다.');
         window.location.reload();
