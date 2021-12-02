@@ -257,6 +257,10 @@ body {
 
     background: #F3F3F7;;
     border-radius: 50px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .dreams {
