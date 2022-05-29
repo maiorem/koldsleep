@@ -1,7 +1,7 @@
-"""config URL Configuration
+"""koldsleep URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from dream_list import views
-from keywordList import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('', include('keywordList.urls')),
-    path('list/', include('dream_list.urls')),
-    path('admin/', admin.site.urls)
-]
+    path('', include('intro.urls')),
+    path('intro/', include('intro.urls')),
+    path('subOutput/', include('intro.urls')),
+    path('calendar/', include('intro.urls')),
+    path('koldProject/', include('intro.urls')),
+    path('proejectDetail/', include('intro.urls')),
+    path('project/', include('project.urls')),
+    path('dreamnetwork/', include('keywordList.urls')),
+    path('dreamnetwork/list/', include('dream_list.urls')),
+    path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'intro.views.page_not_found'

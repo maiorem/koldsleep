@@ -1,130 +1,146 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base_dream.html' %} {% block content %}
 <style>
+  #main {
+    z-index: 1;
+  }
 
-#main {
-    z-index:1;
-}
-
-#popEdit, #popDelete {
-    z-index:2;
-    position:absolute;
+  #popEdit,
+  #popDelete {
+    z-index: 2;
+    position: absolute;
     top: 10px;
-    left:0px;
-    width:100%;
-    background-color:rgba(0,0,0,0.8);
-}
+    left: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 
-
-.close {
-    z-index:4;
-}
-
+  .close {
+    z-index: 4;
+  }
 </style>
 <div class="detail-container">
-    <div class="text-box">
-        <div class="dreams">
-            <div class="dream-cdate">{{board.cdate}}</div>
-            <br>
-            <div class="dream-title">{{board.title}}</div>
-            <br>
-            <div class="dream-content">{{board.content|linebreaksbr}}</div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="dream-user">
-            <div class="dream-writer">{{board.writer}}</div>
-            <br>
-            <br>
-            <div class="dream-btn">
-                <button class="list-btn btn-update" onclick="editPop('open');">수정</button>
-                <button class="list-btn btn-delete" onclick="deletePop('open');">삭제</button>
-            </div>
-        </div>
+  <div class="text-box">
+    <div class="dreams">
+      <div class="dream-cdate">{{board.cdate}}</div>
+      <br />
+      <div class="dream-title">{{board.title}}</div>
+      <br />
+      <div class="dream-content">{{board.content|linebreaksbr}}</div>
     </div>
-</div>
-<div id="popEdit" style="display:none;">   
-    <div class="popup" style="vertical-align:middle;">
-        <input type="password" id="editpw" placeholder="비밀번호를 입력하세요">
-        <br>
-        <form id="editForm">
-            {% csrf_token %}
-            <button id="editPost"><a href="javascript:" onclick="editPost({{board.id}});" style="color: #27272A !important;">일기 수정</a></button>
-            <button class="close-btn"><a href="javascript:" onClick="editPop('close');" style="color: #FFFFFF !important;">x</a></button>
-        </form>  
+    <br />
+    <br />
+    <br />
+    <div class="dream-user">
+      <div class="dream-writer">{{board.writer}}</div>
+      <br />
+      <br />
+      <div class="dream-btn">
+        <button class="list-btn btn-update" onclick="editPop('open');">
+          수정
+        </button>
+        <button class="list-btn btn-delete" onclick="deletePop('open');">
+          삭제
+        </button>
+      </div>
     </div>
+  </div>
 </div>
-<div id="popDelete" style="display:none;">    
-    <div class="popup">
-        <input type="password" id="delpw" placeholder="비밀번호를 입력하세요">
-        <br>
-        <form id="deleteForm">
-            {% csrf_token %}
-            <button id="deletePost"><a href="javascript:" onclick="deletePost({{board.id}});" style="color: #27272A !important;">일기 삭제</a></button>
-            <button class="close-btn"><a href="javascript:" onClick="deletePop('close');" style="color: #FFFFFF !important;">x</a></button>
-        </form>   
-    </div>
+<div id="popEdit" style="display: none">
+  <div class="popup" style="vertical-align: middle">
+    <input type="password" id="editpw" placeholder="비밀번호를 입력하세요" />
+    <br />
+    <form id="editForm">
+      {% csrf_token %}
+      <button id="editPost">
+        <a
+          href="javascript:"
+          onclick="editPost({{board.id}});"
+          style="color: #27272a !important"
+          >일기 수정</a
+        >
+      </button>
+      <button class="close-btn">
+        <a
+          href="javascript:"
+          onClick="editPop('close');"
+          style="color: #ffffff !important"
+          >x</a
+        >
+      </button>
+    </form>
+  </div>
 </div>
-{% endblock %}
-{% block script %}
+<div id="popDelete" style="display: none">
+  <div class="popup">
+    <input type="password" id="delpw" placeholder="비밀번호를 입력하세요" />
+    <br />
+    <form id="deleteForm">
+      {% csrf_token %}
+      <button id="deletePost">
+        <a
+          href="javascript:"
+          onclick="deletePost({{board.id}});"
+          style="color: #27272a !important"
+          >일기 삭제</a
+        >
+      </button>
+      <button class="close-btn">
+        <a
+          href="javascript:"
+          onClick="deletePop('close');"
+          style="color: #ffffff !important"
+          >x</a
+        >
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %} {% block script %}
 <script>
-
-function editPop(type) {
-    
-    if(type == 'open') {
-        $('#popEdit').attr('style','display:inline');
-        $('#popEdit').height($(document).height());
+  function editPop(type) {
+    if (type == "open") {
+      $("#popEdit").attr("style", "display:inline");
+      $("#popEdit").height($(document).height());
+    } else if (type == "close") {
+      $("#popEdit").attr("style", "display:none");
     }
-    
-    else if(type == 'close') {
-        $('#popEdit').attr('style','display:none');
+  }
+
+  function deletePop(type) {
+    if (type == "open") {
+      $("#popDelete").attr("style", "display:inline");
+      $("#popDelete").height($(document).height());
+    } else if (type == "close") {
+      $("#popDelete").attr("style", "display:none");
     }
+  }
 
-}
-
-function deletePop(type) {
-    if(type == 'open') {
-        $('#popDelete').attr('style','display:inline');
-        $('#popDelete').height($(document).height());
-    }
-    
-    else if(type == 'close') {
-        $('#popDelete').attr('style','display:none');
-    }
-
-}
-
-function editPost(id) {
-    if ($('#editpw').val()=="{{board.password}}") {
-        var editForm = $('#editForm');
-        var url = "{% url 'dream_list:to_edit_form' board.id %}";
-        editForm.attr('action', url);
-        editForm.attr('method', 'POST');
-        editForm.submit();
+  function editPost(id) {
+    if ($("#editpw").val() == "{{board.password}}") {
+      var editForm = $("#editForm");
+      var url = "{% url 'dream_list:to_edit_form' board.id %}";
+      editForm.attr("action", url);
+      editForm.attr("method", "POST");
+      editForm.submit();
     } else {
-        alert('비밀번호가 맞지 않습니다.');
-        window.location.reload();
+      alert("비밀번호가 맞지 않습니다.");
+      window.location.reload();
     }
-}
+  }
 
-function deletePost(id) {
-    if ($('#delpw').val()=="{{board.password}}") {
-        var delform = $('#deleteForm');
-        var url = "{% url 'dream_list:board_delete' board.id %}";
-        delform.attr('action', url);
-        delform.attr('method', 'POST');
-        delform.submit();
+  function deletePost(id) {
+    if ($("#delpw").val() == "{{board.password}}") {
+      var delform = $("#deleteForm");
+      var url = "{% url 'dream_list:board_delete' board.id %}";
+      delform.attr("action", url);
+      delform.attr("method", "POST");
+      delform.submit();
     } else {
-        alert('비밀번호가 맞지 않습니다.');
-        window.location.reload();
+      alert("비밀번호가 맞지 않습니다.");
+      window.location.reload();
     }
+  }
 
-}
-
-$(document).ready(function(){
-
-
-});
+  $(document).ready(function () {});
 </script>
 {% endblock %}

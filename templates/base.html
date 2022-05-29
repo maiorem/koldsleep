@@ -1,111 +1,520 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
-    <title>Dream Network</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0"
+    />
+    <title>koldsleep</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}" />
     <!--폰트-->
-    <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+
     <!--부트스트랩css-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
     <!--제이쿼리-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Zepto -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/zepto@1.2.0/dist/zepto.js,npm/zepto@1.2.0/src/fx.js?ver=5.3.2"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
-    <!--부트스트랩js-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
-    <script src="{% static 'main.js' %}"></script>
-</head>
-<body>
-<div class="wrap">
-<a href="{% url 'keywordList:keylist' %}" class="headline"><div class="head-title"><span>Dream Network  </span></div></a>
-<!-- 기본 템플릿 안에 삽입될 내용 Start -->
-{% block content %}
-{% endblock %}
-<!-- 기본 템플릿 안에 삽입될 내용 End -->
-</div>
-</div>
-<!-- 자바스크립트 Start -->
-{% block script %}
-{% endblock %}
-<!-- 자바스크립트 End -->
-</body>
-<script>
-$(document).ready(function(){
-    
-Zepto(function($) {
-  $(window).on('load', function() {
-    $.each($(".head-title"), function(index, item) {
-      const wrapper = $("<div />", { class:"head-title-wrapper"});
-      const roller = $(item);
-      roller.append(wrapper);
-      const span = roller.find('span').first();
-      wrapper.append(span);
-  
-      const span_width = span.get(0).offsetWidth;
-      const max_width = roller.width() + span_width;
-      let inner_width = span_width;
+    <!--Vue.Js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex/dist/vuex.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src='https://unpkg.com/v-calendar'></script>
 
-      while(max_width > inner_width) {
-        wrapper.append(span.clone());
-        inner_width += span_width;
+    <!--dayjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.2/dayjs.min.js" integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+      <!--부트스트랩js-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="header">
+        <p id="koldsleep"><a id="head-hover" href="/">koldsleep</a></p>
+        <p id="mystery_mobile">
+          koldsleep helps freeze disrupt gravity-free attempts. koldsleep's ideas <br>
+          are a way to move into space/future/mystery.
+        </p>
+        <p id="mystery">
+          koldsleep helps freeze disrupt gravity-free atempts. koldsleep's ideas
+          are a way to move into space/<br />future/mystery.
+        </p>
+      </div>
+        <div id="contact">
+          <img id="vector7" src="{% static 'images/Vector 7.png'%}" />
+          <img id="vector377" src="{% static 'images/Vector 377.png'%}" />
+          <div id="contact-main">contact</div>
+          <div id="contact-contents">
+            <a href="mailto:koldsleep@gmail.com">email</a>
+            <br />
+            <a href="https://www.instagram.com/koldsleep">instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="app">
+        <div id="nav_mobile">
+          <router-link class="menu" to="/intro">소개</router-link>
+          <a id="project-toggle-mobile" class="menu"  role="button" href="javascript:;" data-toggle="collapse" data-target="#collapseMobile" aria-expanded="false" aria-controls="collapseMobile"><router-link to="/koldProject">프로젝트</router-link></a>
+          <router-link class="menu" to="/calendar">캘린더</router-link>
+          <router-link class="menu-right" to="/subOutput">서브아웃풋</router-link>
+          <div class="collapse collapse_mobile" id="collapseMobile" style="position:relative;">
+            <router-link class="sub-menu" to="/now">현재</router-link>
+            <router-link class="sub-menu" to="/pred">예정</router-link>
+            <router-link class="sub-menu" to="/pro2022">2022</router-link>
+            <router-link class="sub-menu" to="/pro2021">2021</router-link>
+        </div>
+        </div>
+        <div id="nav">
+          <router-link to="/intro">소개</router-link><br />
+          <a id="project-toggle" role="button" href="javascript:;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><router-link to="/koldProject">프로젝트</router-link></a><br>
+          <div class="collapse" id="collapseExample" style="position:relative; left: 15px;">
+              <router-link to="/now">현재</router-link><br />
+              <router-link to="/pred">예정</router-link><br />
+              <router-link to="/pro2022">2022</router-link><br />
+              <router-link to="/pro2021">2021</router-link><br />
+          </div>
+          <router-link to="/calendar">캘린더</router-link><br />
+          <router-link to="/subOutput">서브아웃풋</router-link>
+        </div>
+        <div id="content">
+          <router-view :projects="projects" />
+        </div>
+      </div>
+      <template id="home-template">
+        <div id="home-contents">
+          <img id="main-img" src="{% static 'images/image.png'%}" />
+        </div>
+      </template>
+
+      <template id="intro-template">
+        <div id="intro">
+        <div id="intro-head">koldsleep 콜드슬립<br>서울특별시 강북구 인수봉로 301 1층<br><a href="mailto:koldsleep@gmail.com">koldsleep@gmail.com</a><br><a href="https://www.instagram.com/koldsleep">instagram</a></div>
+        <div id="intro-hardware"><p style="text-indent: 25px;">콜드슬립 하드웨어</p>강북구 주택가 1층에 위치한 콜드슬립은 3.63평(12m²)의 공간입니다. 분해 가능한 철제 책장과 책들, 흰 벽, 통유리, 차가운 공기로 구성되어 있습니다. 방문을 원하실 경우 콜드슬립 이메일, 해당 프로그램의 네이버
+          예약 링크 등으로 사전 예약해 주세요.</div>
+        <div id="intro-software"><p style="text-indent: 25px;">콜드슬립 소프트웨어</p>예술 언어로 여성, 소수자의 서사를 생산하고 서로 연결되고자 합니다. 재미있는 제안을 기다리고 있습니다.</div>
+        <div id="intro-map"><img id="koldsleep-map" src="{% static 'images/Rectangle 2678.png'%}" ></div>
+        <div id="intro-textroad"><p style="text-indent: 25px;">오시는 길</p>서울특별시 강북구 인수봉로 301 1층<br><br><p style="text-indent: 25px;">버스</p>국립419묘지삼거리.윤극영가옥 정류장 강북01, 1165<br><br><p style="text-indent: 25px;">지하철</p>우이신설선 4.19민주묘지역 2번 출구 (10분 정도 오르막길을 걷게 됩니다)<br><br><p style="text-indent: 25px;">주차</p>koldsleep 바로 앞에 차량 1대를 잠시 주차할 공간이 있지만, 주차장 형태가 아니며, 골목길이어서 넓이가 넉넉하지 않습니다. 대중교통을 권장합니다.</div>
+        </div>
+      </template>
+
+      <template id="project-template">
+        <div class="project-template-div" style="text-align:left;">
+          <div class="projects-status">진행중</div>
+          <div v-for="(project, idx) in projects" :key="idx" class="projects-wrap" > 
+            <div v-if="project.proceeding == '진행중'" class="projects-if">
+              <div class="project-view" @click="projectView(project.id)">
+                <router-link to="/proejectDetail"><v-img class="project-poster" :src="project.poster" ></v-img></router-link>
+                <div style="height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+                <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+              </div>  
+            </div>
+          </div>
+         </div>
+      </template>
+
+      <template id="now-template">
+        <div class="now-template-div" style="text-align:left;">
+          <div v-for="(project, idx) in projects" :key="idx" class="projects-wrap"> 
+            <div v-if="project.proceeding == '진행중'" class="projects-if">
+              <div class="project-view" @click="projectView(project.id)">
+                <router-link to="/proejectDetail"><v-img class="project-poster" :src="project.poster"></v-img></router-link>
+                <div style="height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+                <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </template>
+
+
+      <template id="pred-template">
+        <div class="pred-template-div" style="text-align:left;">
+          <div v-for="(project, idx) in projects" :key="idx" class="projects-wrap"> 
+            <div v-if="project.proceeding == '진행예정'" class="projects-if">
+              <div  class="project-view" @click="projectView(project.id)">
+                <router-link to="/proejectDetail"><v-img class="project-poster" :src="project.poster"></v-img></router-link>
+                <div style="height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+                <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+              </div> 
+            </div>  
+          </div>
+        </div>
+      </template>
+
+      <template id="pro2022-template">
+        <div class="pro2022-template-div" style="text-align:left;">
+          <div v-for="(project, idx) in projects" :key="idx" class="projects-wrap"> 
+            <div v-if="project.end_time.includes('2022')" class="projects-if">
+              <div  class="project-view"  @click="projectView(project.id)">
+                <router-link to="/proejectDetail"><v-img class="project-poster" :src="project.poster" ></v-img></router-link>
+                <div style="height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+                <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+              </div> 
+            </div>  
+          </div>
+        </div>
+      </template>
+
+      <template id="pro2021-template">
+        <div class="pro2021-template-div" style="text-align:left;">
+          <div v-for="(project, idx) in projects" :key="idx" class="projects-wrap"> 
+            <div v-if="project.end_time.includes('2021')" class="projects-if">
+              <div  class="project-view"  @click="projectView(project.id)">
+                <router-link to="/proejectDetail"><v-img class="project-poster" :src="project.poster"></v-img></router-link>
+                <div style="height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+                <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+              </div> 
+            </div>  
+          </div>
+        </div>
+      </template>
+
+      <template id="projectDetail-template">
+        <div style="text-align:left;">
+          <p class="item-title" v-text="itemdetail.title"></p>
+          <div><span class="item-time-start" v-text="itemdetail.start_time"></span><span style="font-size: 22px;font-weight: 600;">-</span><span class="item-time-end" v-text="itemdetail.end_time"></span></div>
+          <p></p>
+          <span class="project-tag"  v-text="itemdetail.tag"></span><span class="project-proceeding" v-text="itemdetail.proceeding"></span>
+          <p></p>
+          <v-img class="detail-poster" :src="itemdetail.poster"></v-img> <br>
+          <span class="detail_text">일시</span> <span class="detail-time-start" v-text="itemdetail.start_time"></span> ~ <span class="detail-time-end" v-text="itemdetail.end_time"></span> <br>
+          <span class="detail_text">장소</span> <span class="detail-place" v-text="itemdetail.place"></span> <br>
+          <span class="detail_text">신청</span> <a :href="itemdetail.link"><span class="detail-link" v-text="itemdetail.link"></span></a> <br>
+          <br>
+          <div class="detail-contents" v-html="itemdetail.content"></div> <br>
+          <div style="text-align:right;"><router-link to="/koldProject"><button class="item-list-btn">목록</button></router-link></div>
+        </div>
+      </template>
+
+      <template id="calendar-template">
+        <div id="calendar-main">
+          <div id="calendar-head">
+            <v-calendar :attributes='attributes'  @dayclick="onDayClick" >
+            </v-calendar>
+          </div>
+          <div id="calendar-footer" >
+            <router-view></router-view>
+          </div>
+        </div>
+      </template>
+
+      <template id="suboutput-template">
+        <div id="dreamNetwork">
+          <a href="{% url 'keywordList:keylist' %}"><img src="{% static 'images/iPhone 11 Pro.png'%}"></a>
+        </div>
+      </template>
+
+      <template id="dayproject-template">
+        <div id="day-project">
+          <div class="day-project-div" v-for="project in project_list">
+            <div class="day-project-item">
+            <v-img class="project-poster" :src="project.poster" style="width:275px; height:180px;"></v-img>
+            <div style="width: 275px; height:60px; margin-bottom: 5px;"><p class="project-title" v-text="project.title"></p></div>
+            <span class="project-tag"  v-text="project.tag"></span><span class="project-proceeding" v-text="project.proceeding"></span>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+      {% block content %} {% endblock %}
+      <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    </div>
+    <!-- 자바스크립트 Start -->
+    {% block script %} {% endblock %}
+    <!-- 자바스크립트 End -->
+  </body>
+  <script type="module">
+ 
+    //이벤트버스
+    var eventBus = new Vue();
+
+    //날짜 범위 배열화
+    function getDateRangeData(param1, param2){  
+      var res_day = [];
+      var ss_day = new Date(param1);
+      var ee_day = new Date(param2);    	
+      while(ss_day.getTime() <= ee_day.getTime()){
+        var _mon_ = (ss_day.getMonth()+1);
+        _mon_ = _mon_ < 10 ? '0'+_mon_ : _mon_;
+        var _day_ = ss_day.getDate();
+        _day_ = _day_ < 10 ? '0'+_day_ : _day_;
+        res_day.push(ss_day.getFullYear() + '-' + _mon_ + '-' +  _day_);
+        ss_day.setDate(ss_day.getDate() + 1);
       }
-      
-      anime({
-        targets: wrapper.get(0),
-        translateX: {
-          value: '-=' + span_width + 'px',
-          duration: 3000
+      return res_day;
+    }
+    
+    const Home = Vue.component("home", {
+      template: `#home-template`,
+    });
+    const Intro = Vue.component("intro", {
+      template: `#intro-template`,
+    });
+
+
+    const Project = Vue.component("project", {
+      props: {
+        projects : Array,
+      },
+      template: `#project-template`,
+      methods : {
+        projectView(idx) {
+          axios.get(`/project/api_project_list_info/${idx}`)
+          .then((response) => {
+            console.log(response.data);
+            var item = response.data;
+            eventBus.$emit("viewdetail", item);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
         },
-        loop: true,
-        easing: 'linear'
+      },
+    });
+
+    const Now = Vue.component("now", {
+      props: {
+        projects : Array,
+      },
+      template: `#now-template`,
+      methods : {
+        projectView(idx) {
+          axios.get(`/project/api_project_list_info/${idx}`)
+          .then((response) => {
+            console.log(response.data);
+            var item = response.data;
+            eventBus.$emit("viewdetail", item);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        },
+      },
+    });
+    const Predict = Vue.component("pred", {
+      props: {
+        projects : Array,
+      },
+      template: `#pred-template`,
+      methods : {
+        projectView(idx) {
+          axios.get(`/project/api_project_list_info/${idx}`)
+          .then((response) => {
+            console.log(response.data);
+            var item = response.data;
+            eventBus.$emit("viewdetail", item);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        },
+      },
+    });
+
+    const Proj2022 = Vue.component("pro2022", {
+      props: {
+        projects : Array,
+      },
+      template: `#pro2022-template`,
+      methods : {
+        projectView(idx) {
+          axios.get(`/project/api_project_list_info/${idx}`)
+          .then((response) => {
+            console.log(response.data);
+            var item = response.data;
+            eventBus.$emit("viewdetail", item);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        },
+      },
+    });
+
+    const Proj2021 = Vue.component("pro2021", {
+      props: {
+        projects : Array,
+      },
+      template: `#pro2021-template`,
+      methods : {
+        projectView(idx) {
+          axios.get(`/project/api_project_list_info/${idx}`)
+          .then((response) => {
+            console.log(response.data);
+            var item = response.data;
+            eventBus.$emit("viewdetail", item);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        },
+      },
+    });
+
+    const projectDetail = Vue.component("projectDetail", {
+      template: `#projectDetail-template`,
+      created() {
+        eventBus.$on("viewdetail", this.receive);
+      },
+      methods: {
+        receive(project) {
+          console.log("recieve", project);
+          project.start_time = dayjs(project.start_time).format("YYYY.MM.DD.");
+          project.end_time = dayjs(project.end_time).format("YYYY.MM.DD.");
+          this.itemdetail = project;
+        },
+      },
+      data() {
+        return {
+          itemdetail : {},
+        }
+      },
+    });
+
+    const Calendar = Vue.component("calendar", {
+      template: `#calendar-template`,
+      props : {
+        projects : Array
+      },
+      data() {
+        return {
+          posters : [],
+        }
+      },
+      computed : {
+
+        attributes() {
+         
+          return [
+            ...this.projects.map(project => ({
+                dates : getDateRangeData(project.start_time, project.end_time),
+                dot : true,
+                popover : {
+                  label : project.title,
+                  visibility: 'focus'
+                },
+                customData : {
+                  title : project.title,
+                  poster : project.poster,
+                  tag : project.tag,
+                  proceeding : project.proceeding,
+                },
+              })
+            ),
+          ];
+        },
+      },
+      methods : {
+        onDayClick(day) {
+          var dayprojectlist = [];
+          day.attributes.map(attribute => (
+            dayprojectlist.push(attribute.customData)
+          ));
+          this.$router.push({ path: `/calendar/day/${day.id}` });
+          eventBus.$emit("daypick",  dayprojectlist);
+        }
+      }
+    });
+
+    const SubOutput = Vue.component("subOutput", {
+      template: `#suboutput-template`,
+    });
+
+    const DayProject = Vue.component("day-project", {
+      template: `#dayproject-template`,
+      created() {
+        eventBus.$on("daypick", this.receive);
+      },
+      methods: {
+        receive(project) {
+          console.log("recieve", project);
+          this.project_list = project;
+        },
+      },
+      data() {
+        return {
+          project_list : [],
+        }
+      },
+    });
+
+    //router
+    const routes = [
+      { path: "/", component: Home },
+      { path: "/intro", component: Intro },
+      { path: "/calendar", component: Calendar, children: [{ name: "day-project", path: "day/:id", component: DayProject }], },
+      { path: "/subOutput", component: SubOutput },
+      { path: "/koldProject", component: Project},
+      { path: "/now", component: Now},
+      { path: "/pred", component: Predict},
+      { path: "/pro2022", component: Proj2022},
+      { path: "/pro2021", component: Proj2021},
+      { path: "/proejectDetail", component: projectDetail},
+    ];
+
+    const router = new VueRouter({
+      mode: "history",
+      routes,
+    });
+
+    var app = new Vue({
+      el: "#app",
+      vuetify: new Vuetify(),
+      router,
+      data : {
+         projects: [],
+      },
+      methods : {
+        fetchData() {
+          var vm = this;
+
+          const header = {
+            headers:{
+             'Access-Control-Allow-Origin' : "*",
+             'Access-Control-Allow-Methods' : "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+             'Access-Control-Allow-Headers' : "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, access-control-allow-origin, Authorization",
+             'Access-Control-Allow-Credentials' : "true",
+            }
+          }
+        
+          return axios
+          .get("/project/api_project_list_info", header)
+          .then(function(response){
+           vm.projects = response.data;
+           console.log(vm.projects);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        },
+      },
+      created() {
+        this.fetchData();
+      },
+      components : {
+        Now, Predict, Proj2021, Proj2022, Calendar
+      }
+    });
+
+    $(document).ready(function(){
+      $("#project-toggle").click(function(){
+        $(".collapse").collapse('toggle');
+      });
+      $("#project-toggle-mobile").click(function(){
+        $(".collapse_mobile").collapse('toggle');
       });
     });
-  })
-});
 
-(function() {
-    var hidden = "hidden";
- 
-    // Standards:
-    if (hidden in document)
-        document.addEventListener("visibilitychange", onchange);
-    else if ((hidden = "mozHidden") in document)
-        document.addEventListener("mozvisibilitychange", onchange);
-    else if ((hidden = "webkitHidden") in document)
-        document.addEventListener("webkitvisibilitychange", onchange);
-    else if ((hidden = "msHidden") in document)
-        document.addEventListener("msvisibilitychange", onchange);
-    // IE 9 and lower:
-    else if ('onfocusin' in document)
-        document.onfocusin = document.onfocusout = onchange;
-    // All others:
-    else
-        window.onpageshow = window.onpagehide 
-            = window.onfocus = window.onblur = onchange;
- 
-    function onchange (evt) {
-        var v = 'sg-tab-bust-visible', h = 'sg-tab-bust-hidden',
-            evtMap = { 
-                focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
-            };
- 
-        evt = evt || window.event;
-        if (evt.type in evtMap)
-            document.body.className = evtMap[evt.type];
-        else        
-            document.body.className = this[hidden] ? "sg-tab-bust-hidden" : "sg-tab-bust-visible";
-    }
-})();
-
-});
-
-
-
-
-</script>
+  </script>
 </html>

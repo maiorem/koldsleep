@@ -8,9 +8,8 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib import messages
-from konlpy.tag import Mecab
-
-
+from eunjeon import Mecab
+# from konlpy.tag import Mecab
 
 
 # Create your views here.
@@ -46,28 +45,22 @@ def board_create(request) :
             
             # 키워드 저장
             new_text = request.POST['content']
-            print("신규 텍스트 :: ", new_text)
             # 명사 추출
             mecab_nouns = mecab.nouns(new_text)
             
-            print("명사 분석 결과 :: ", mecab_nouns)
             # 두 번 이상 쓰여진 키워드만 
             result = Counter(mecab_nouns)
             new_key = []
             for key, value in result.items() :
                 if value > 1 :
                     new_key.append(key)
-            print("두 번 이상 쓰여진 키워드 :: ", new_key)
             # 한글자 제외        
             new_keywords = [word for word in new_key if len(word) > 1 ]
             all_key = Keyword.objects.all().values_list('word', flat=True) # 데이터베이스 전체 키워드
             all_key = list(all_key)
-            print("키워드 목록 ::", new_keywords)
-            print("현재까지 저장된 모든 키워드 ::" , all_key)
             # 이미 저장되어 있으면 제외
             for keyword in new_keywords :
                 if keyword not in all_key :
-                    print("최종 신규 저장되는 키워드 ::", keyword)
                     Keyword(word=keyword).save()
             board.save()
             return redirect('dream_list:index')

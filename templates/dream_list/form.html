@@ -1,65 +1,94 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base_dream.html' %} {% block content %}
 <style>
-
-@media (max-width: 600px) {
-    .headline {display:none;}
-
-}
-
+  @media (max-width: 600px) {
+    .headline {
+      display: none;
+    }
+  }
 </style>
 <div class="form-container">
-    <div class="form-content">
+  <div class="form-content">
     <form method="post" class="post-form my-3">
-        {% csrf_token %}
-        <!-- 오류표시 Start -->
-        {% if form.errors %}
-            <div class="alert alert-danger" role="alert">
-            {% for field in form %}
-                {% if field.errors %}
-                <strong>{{ field.label }}</strong>
-                {{ field.errors }}
-                {% endif %}
-            {% endfor %}
-            </div>
-        {% endif %}
-        <!-- 오류표시 End -->
-        <div class="form-main">
+      {% csrf_token %}
+      <!-- 오류표시 Start -->
+      {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        {% for field in form %} {% if field.errors %}
+        <strong>{{ field.label }}</strong>
+        {{ field.errors }} {% endif %} {% endfor %}
+      </div>
+      {% endif %}
+      <!-- 오류표시 End -->
+      <div class="form-main">
         <span class="format-date">
-        <input type="date" class="dream-form form-date" name="cdate" id="cdate" style="padding-top: 10px;" required>
+          <input
+            type="date"
+            class="dream-form form-date"
+            name="cdate"
+            id="cdate"
+            style="padding-top: 10px"
+            required
+          />
         </span>
-        <input type="text" class="dream-form form-title" name="title" id="title" placeholder="제목"
-                   value="{{ form.title.value|default_if_none:'' }}" maxlength='30' required>
-        <textarea class="dream-form form-contents" name="content" placeholder="내용"
-                      id="content" rows="10" required>{{ form.content.value|default_if_none:'' }}</textarea>
-        </div>              
-        <div class="form-footer">
+        <input
+          type="text"
+          class="dream-form form-title"
+          name="title"
+          id="title"
+          placeholder="제목"
+          value="{{ form.title.value|default_if_none:'' }}"
+          maxlength="30"
+          required
+        />
+        <textarea
+          class="dream-form form-contents"
+          name="content"
+          placeholder="내용"
+          id="content"
+          rows="10"
+          required
+        >
+{{ form.content.value|default_if_none:'' }}</textarea
+        >
+      </div>
+      <div class="form-footer">
         <div class="form-user-area">
-        <input type="text" class="dream-form writer-name" name="writer" id="writer" placeholder="이름"
-                   value="{{ form.writer.value|default_if_none:'' }}" maxlength='10' required>
-        <input type="password" class="dream-form writer-pw" name="password" id="password" placeholder="비밀번호"
-                   value="{{ form.password.value|default_if_none:'' }}" style="ime-mode:disabled;" required>
+          <input
+            type="text"
+            class="dream-form writer-name"
+            name="writer"
+            id="writer"
+            placeholder="이름"
+            value="{{ form.writer.value|default_if_none:'' }}"
+            maxlength="10"
+            required
+          />
+          <input
+            type="password"
+            class="dream-form writer-pw"
+            name="password"
+            id="password"
+            placeholder="비밀번호"
+            value="{{ form.password.value|default_if_none:'' }}"
+            style="ime-mode: disabled"
+            required
+          />
         </div>
         <button type="submit" class="form-btn">올리기</button>
-        </div>
+      </div>
     </form>
-    </div>
+  </div>
 </div>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
 <script>
-
-$(document).ready(function(){
+  $(document).ready(function () {
     curr = new Date();
-    utc = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
-    const KR_TIME_DIFF = 9 * 60 * 60 * 1000;  // UTC에서 9시간 추가
-    kr_curr = new Date(utc + (KR_TIME_DIFF));    
-    console.log(kr_curr.toISOString().slice(0,10));
-     
-    document.getElementById('cdate').value = kr_curr.toISOString().slice(0,10);
+    utc = curr.getTime() + curr.getTimezoneOffset() * 60 * 1000;
+    const KR_TIME_DIFF = 9 * 60 * 60 * 1000; // UTC에서 9시간 추가
+    kr_curr = new Date(utc + KR_TIME_DIFF);
+    console.log(kr_curr.toISOString().slice(0, 10));
 
-});
-
+    document.getElementById("cdate").value = kr_curr.toISOString().slice(0, 10);
+  });
 </script>
 {% endblock%}
-

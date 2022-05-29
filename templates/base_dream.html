@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+    <base href="/">
+    <title>Dream Network</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <!--폰트-->
+    <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <!--부트스트랩css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!--제이쿼리-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Zepto -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/zepto@1.2.0/dist/zepto.js,npm/zepto@1.2.0/src/fx.js?ver=5.3.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+    <!--부트스트랩js-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
+</head>
+<body>
+<div class="wrap">
+<a href="{% url 'keywordList:keylist' %}" class="headline"><div class="head-title"><span>Dream Network  </span></div></a>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+</div>
+</div>
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+<script>
+$(document).ready(function(){
+    
+Zepto(function($) {
+  $(window).on('load', function() {
+    $.each($(".head-title"), function(index, item) {
+      const wrapper = $("<div />", { class:"head-title-wrapper"});
+      const roller = $(item);
+      roller.append(wrapper);
+      const span = roller.find('span').first();
+      wrapper.append(span);
+  
+      const span_width = span.get(0).offsetWidth;
+      const max_width = roller.width() + span_width;
+      let inner_width = span_width;
+
+      while(max_width > inner_width) {
+        wrapper.append(span.clone());
+        inner_width += span_width;
+      }
+      
+      anime({
+        targets: wrapper.get(0),
+        translateX: {
+          value: '-=' + span_width + 'px',
+          duration: 3000
+        },
+        loop: true,
+        easing: 'linear'
+      });
+    });
+  })
+});
+
+(function() {
+    var hidden = "hidden";
+ 
+    // Standards:
+    if (hidden in document)
+        document.addEventListener("visibilitychange", onchange);
+    else if ((hidden = "mozHidden") in document)
+        document.addEventListener("mozvisibilitychange", onchange);
+    else if ((hidden = "webkitHidden") in document)
+        document.addEventListener("webkitvisibilitychange", onchange);
+    else if ((hidden = "msHidden") in document)
+        document.addEventListener("msvisibilitychange", onchange);
+    // IE 9 and lower:
+    else if ('onfocusin' in document)
+        document.onfocusin = document.onfocusout = onchange;
+    // All others:
+    else
+        window.onpageshow = window.onpagehide 
+            = window.onfocus = window.onblur = onchange;
+ 
+    function onchange (evt) {
+        var v = 'sg-tab-bust-visible', h = 'sg-tab-bust-hidden',
+            evtMap = { 
+                focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h 
+            };
+ 
+        evt = evt || window.event;
+        if (evt.type in evtMap)
+            document.body.className = evtMap[evt.type];
+        else        
+            document.body.className = this[hidden] ? "sg-tab-bust-hidden" : "sg-tab-bust-visible";
+    }
+})();
+
+});
+
+
+
+
+</script>
+</html>

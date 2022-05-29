@@ -1,106 +1,129 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'base_dream.html' %} {% block content %} {% load static %}
 <style>
-body {
+  body {
     background: #000000;
-}
-.head-title {
-    color: #FFFFFF;
-}
+  }
+  .head-title {
+    color: #ffffff;
+  }
 </style>
 
 <div class="btn-area">
-    <div class="btn-basic btn-right-line btn-basic-list basic-list-out">
-        <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#FFFFFF;">
-            <img class="btn-list-over" src="{% static 'images/List-white.svg'%}">
-            List
-        </a>
-    </div>
-    <div class="btn-basic btn-right-line btn-basic-write basic-write-over" style="display:none;">
-        <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#000000;">
-            <img class="btn-write-out" src="{% static 'images/pencil.svg'%}">
-            Write
-        </a>
-    </div>
-    <div class="btn-basic btn-left-line btn-basic-list basic-list-over"  style="display:none;">
-        <a href="{% url 'dream_list:index' %}" class="btn-list" style="color:#000000;">
-            <img class="btn-list-out" src="{% static 'images/List.svg'%}">
-            List
-        </a>
-    </div>
-    <div class="btn-basic btn-left-line btn-basic-write basic-write-out">
-        <a href="{% url 'dream_list:board_create' %}" class="btn-write" style="color:#FFFFFF;">
-            <img class="btn-write-over" src="{% static 'images/pencil-white.svg'%}">
-            Write
-        </a>
-    </div>
+  <div class="btn-basic btn-right-line btn-basic-list basic-list-out">
+    <a
+      href="{% url 'dream_list:index' %}"
+      class="btn-list"
+      style="color: #ffffff"
+    >
+      <img class="btn-list-over" src="{% static 'images/List-white.svg'%}" />
+      List
+    </a>
+  </div>
+  <div
+    class="btn-basic btn-right-line btn-basic-write basic-write-over"
+    style="display: none"
+  >
+    <a
+      href="{% url 'dream_list:board_create' %}"
+      class="btn-write"
+      style="color: #000000"
+    >
+      <img class="btn-write-out" src="{% static 'images/pencil.svg'%}" />
+      Write
+    </a>
+  </div>
+  <div
+    class="btn-basic btn-left-line btn-basic-list basic-list-over"
+    style="display: none"
+  >
+    <a
+      href="{% url 'dream_list:index' %}"
+      class="btn-list"
+      style="color: #000000"
+    >
+      <img class="btn-list-out" src="{% static 'images/List.svg'%}" />
+      List
+    </a>
+  </div>
+  <div class="btn-basic btn-left-line btn-basic-write basic-write-out">
+    <a
+      href="{% url 'dream_list:board_create' %}"
+      class="btn-write"
+      style="color: #ffffff"
+    >
+      <img class="btn-write-over" src="{% static 'images/pencil-white.svg'%}" />
+      Write
+    </a>
+  </div>
 </div>
 <div class="container-box">
-    <div class="door-area" onmouseover="doormouseover();" onmouseout="doormouseout();">
-        <table class="keywords-in-the-door" style="table-layout: fixed;">
-        {% if key_list %}
-            {% for key in key_list %}
-                {% if forloop.counter0|divisibleby:7 %}
-                <tr>
-                {% endif %}
-                <td style="font-size: 18px; padding-bottom: 17px !important;  white-space:nowrap;"><a class="key-link" style="color:#000000;" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a></td>
-                {% if forloop.counter|divisibleby:7 %}
-                </tr>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        </table>
-    </div>
+  <div class="door-area" onmouseover="doormouseover();" onmouseout="doormouseout();">
+    <table class="keywords-in-the-door" style="table-layout: fixed">
+      {% if key_list %} 
+        {% for key in key_list %} 
+          {% if forloop.counter0|divisibleby:7 %}
+          <tr>
+          {% endif %}
+          <td style="font-size: 18px; padding-bottom: 17px !important; white-space: nowrap;">
+          <a class="key-link" style="color: #000000" href="{% url 'keywordList:result' key.word %}">{{key.word}}</a>
+          </td>
+          {% if forloop.counter|divisibleby:7 %}
+          </tr>
+          {% endif %} 
+        {% endfor %} 
+      {% endif %}
+    </table>
+  </div>
 </div>
 
-{% endblock %}
+{% endblock %} {% block script %}
+<script type="text/javascript">
+  function doormouseover() {
+    $("body").css("color", "black");
+    $("body").css("backgroundColor", "white");
+    $(".door-area").css(
+      "background",
+      "linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000)"
+    );
+    $(".door-area").css("box-shadow", "0px 4px 80px #000000");
+    $(".head-title").css("color", "#000000");
+    $(".basic-list-out").css("display", "none");
+    $(".basic-list-over").css("display", "inline");
+    $(".basic-write-out").css("display", "none");
+    $(".basic-write-over").css("display", "inline");
+    $(".btn-list").css("color", "#000000");
+    $(".btn-write").css("color", "#000000");
+    $(".key-link").css("color", "#FFFFFF");
+  }
 
-{% block script %}
-<script type='text/javascript'>
+  function doormouseout() {
+    $("body").css("color", "white");
+    $("body").css("backgroundColor", "black");
+    $(".door-area").css(
+      "background",
+      "linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF)"
+    );
+    $(".head-title").css("color", "#FFFFFF");
+    $(".basic-list-out").css("display", "inline");
+    $(".basic-list-over").css("display", "none");
+    $(".basic-write-out").css("display", "inline");
+    $(".basic-write-over").css("display", "none");
+    $(".btn-list").css("color", "#FFFFFF");
+    $(".btn-write").css("color", "#FFFFFF");
+    $(".key-link").css("color", "#000000");
+  }
 
+  // 모바일 감지 이벤트
+  function Mobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
 
-function doormouseover() {
-    $('body').css('color', 'black');
-    $('body').css('backgroundColor', 'white');
-    $('.door-area').css('background', 'linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #000000, #000000)');   
-    $('.door-area').css('box-shadow', '0px 4px 80px #000000'); 
-    $('.head-title').css('color', '#000000');
-    $('.basic-list-out').css('display', 'none');
-    $('.basic-list-over').css('display', 'inline');
-    $('.basic-write-out').css('display', 'none');
-    $('.basic-write-over').css('display', 'inline');
-    $('.btn-list').css('color', '#000000');
-    $('.btn-write').css('color', '#000000');
-    $('.key-link').css('color', '#FFFFFF');
-}    
-
-function doormouseout() {
-    $('body').css('color', 'white');
-    $('body').css('backgroundColor', 'black');
-    $('.door-area').css('background', 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 15.44%), linear-gradient(0deg, #FFFFFF, #FFFFFF)');   
-    $('.head-title').css('color', '#FFFFFF');
-    $('.basic-list-out').css('display', 'inline');
-    $('.basic-list-over').css('display', 'none');
-    $('.basic-write-out').css('display', 'inline');
-    $('.basic-write-over').css('display', 'none');
-    $('.btn-list').css('color', '#FFFFFF');
-    $('.btn-write').css('color', '#FFFFFF');
-    $('.key-link').css('color', '#000000');
-}
-
-// 모바일 감지 이벤트
-function Mobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-$(document).ready(function(){
+  $(document).ready(function () {
     if (Mobile()) {
-        var tble = '';
+      var tble = "";
     }
-    
-});
-
-
+  });
 </script>
 {% endblock %}
