@@ -15,7 +15,8 @@ from eunjeon import Mecab
 # Create your views here.
 def index(request) :
     page = request.GET.get('page', 1) # page 이름으로 넘어오는 정보가 없으면 1
-    query=request.GET.get('query')
+    query = request.GET.get('query')
+    print('page : ', page)
     # 검색어
     if query :
         dream_list = Board.objects.filter(title__contains=query, isVisible='true').order_by('-id')
@@ -24,7 +25,7 @@ def index(request) :
     # 페이징 처리
     paginator=Paginator(dream_list, 10) # 페이징 기준을 10개 리스트로
     page_obj=paginator.get_page(page)
-       
+    print('page_obj', page_obj)
     context = {'dream_list' : page_obj }
     return render(request, 'dream_list/list.html', context)
 

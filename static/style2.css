@@ -1,9 +1,5 @@
-* {
-  font-family: Pretendard Variable;
-}
-
 a {
-  color: #222222 !important;
+  color: #222222;
   text-decoration: none !important;
 }
 
@@ -17,6 +13,7 @@ body {
 }
 
 .wrap {
+  font-family: 'Pretendard';
   display: inline-block;
   position: absolute;
   left: 50%;
@@ -31,8 +28,9 @@ body {
   display: none;
 }
 
-#header:hover {
-  color: #156fa3 !important;
+#header:hover, #koldsleep:hover, #mistery:hover {
+  color: #156FA3 !important;
+  filter: blur(8px);
 }
 
 #koldsleep {
@@ -134,7 +132,7 @@ body {
 #content {
   position: absolute;
   top: 350px;
-  left: 400px;
+  left: 500px;
   text-align: center;
   width: 750px;
   height: auto;
@@ -162,7 +160,7 @@ body {
   bottom: 0%;
 
   border-radius: 60px;
-  transform: rotate(11.73deg);
+  transform: rotate(15.03deg);
 }
 
 #intro {
@@ -476,7 +474,7 @@ body {
 
 @media (min-width: 2000px) {
   #content {
-    left: 800px;
+    left: 850px;
   }
 }
 
@@ -611,7 +609,7 @@ body {
     left: 0;
     filter: drop-shadow(0px 0px 10px #1670a3);
     border-radius: 24px;
-    transform: rotate(-11.73deg);
+    transform: rotate(0deg);
   }
   .projects-status {
     height: 20px;

@@ -1,8 +1,10 @@
 from dataclasses import fields
 from rest_framework import serializers, routers, viewsets
 from .models import Project
+from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer) :
+class ProjectSerializer(TaggitSerializer, serializers.ModelSerializer) :
+    tag = TagListSerializerField()
     class Meta :
         model = Project
-        fields = ['id', 'title', 'cdate', 'start_time', 'end_time', 'place', 'link', 'tag', 'proceeding', 'poster', 'content', 'isVisible']
+        fields = '__all__'

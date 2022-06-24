@@ -1,19 +1,22 @@
 from django.db import models
 from django.conf import settings
 from pytz import timezone
+from taggit.managers import TaggableManager
+
 
 # Create your models here.
 class Project(models.Model) :
     
-    TAG_CHOICES = {
-      ('상연','상연'), 
-      ('교육', '교육'),
-      ('전시', '전시'),
-      ('웹사이트', '웹사이트'),
-      ('모임', '모임'),
-      ('워크숍', '워크숍'),
-      ('기타', '기타')
-    }
+    # TAG_CHOICES = {
+    #   ('공연', '공연'), 
+    #   ('전시', '전시'),
+    #   ('모임', '모임'),
+    #   ('워크숍', '워크숍'),
+    #   ('온라인', '온라인'),
+    #   ('대관', '대관'),
+    #   ('작업', '작업'),
+    #   ('기타', '기타')
+    # }
     
     PROCEEDING_CHOICES = {
       ('진행중','진행중'), 
@@ -29,7 +32,7 @@ class Project(models.Model) :
     place = models.CharField(max_length=30) #프로젝트 장소
     link = models.CharField(max_length=30) #프로젝트 신청 링크
     
-    tag = models.CharField(max_length=10, choices=TAG_CHOICES) #관련태그 (전시, 교육, 상영 등)
+    tag = TaggableManager(blank=True)
     proceeding = models.CharField(max_length=10, default="진행중", choices=PROCEEDING_CHOICES) #진행 종료 여부
     
     poster = models.ImageField(upload_to="") #포스터 이미지

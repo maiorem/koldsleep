@@ -49,7 +49,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'bootstrap4',
     'corsheaders', # CORS 관련 추가
+    'taggit.apps.TaggitAppConfig', # 태그 추가
+    'taggit_templatetags2',        # 태그 추가
+    'taggit_serializer', # 태그 + django rest
 ]
+
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 5
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',     # CORS 관련 추가
