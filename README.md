@@ -7,5 +7,5 @@
 * nginx
 
 
-## 배포 사이트 주소
+## 운영 사이트 주소
 [koldsleep](http://www.koldsleep.com/)
