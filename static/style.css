@@ -286,21 +286,23 @@ body {
 }
 
 .popup {
-    position: relative;
+    position: fixed;
+    left: 35%;
     width: 650px; 
     height:400px; 
     border-radius: 50px;
     z-index:3;
     background-color:#1C1C1E;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     text-align: center;
     top: 200px;
     
 }
 
 #editpw, #delpw {
-    position: relative;
-    top: 40%;
+    position: absolute;
+    top: 150px;
+    left : 200px;
     font-size: 30px;
     background-color: #1C1C1E;
     border : none;
@@ -381,7 +383,7 @@ input[type="text"]:focus, input[type="text"]:hover, input[type="text"]:active, i
 
     .detail-container {height: auto; top:0;}
     .text-box { width: 100%; height: auto;}
-    .popup { width: 100vw; height: 75vw;}
+    .popup { width: 100vw; height: 75vw; left: 0;}
     .list-btn {font-size: 18px;}
     #editpw, #delpw {font-size: 20px;}
     #editPost, #deletePost { width: 100px; height: 50px; font-size: 15px;}

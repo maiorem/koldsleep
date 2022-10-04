@@ -10,23 +10,28 @@ a:hover {
 body {
   width: 100vw;
   height: 100vh;
+  isolation: isolate;
 }
 
+
 .wrap {
-  font-family: 'Pretendard';
-  display: inline-block;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1440px;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   height: 100vh;
 }
+
 #nav a:hover {
   text-shadow: 0px 1px 10px #1670a3;
 }
 #nav_mobile {
   display: none;
 }
+
+#header {
+  margin-top: 10px;
+  position: fixed;
+  
+}
+
 
 #header:hover, #koldsleep:hover, #mistery:hover {
   color: #156FA3 !important;
@@ -39,15 +44,16 @@ body {
   line-height: 175px;
   letter-spacing: -0.06em;
   text-align: left;
+  
+
 }
-#mystery_mobile {
+#koldsleep_mobile {
   display: none;
 }
 
 #mystery {
   position: absolute;
   left: 1.18%;
-  right: 16.55%;
   top: 200px;
   bottom: 11.11%;
   height: 50px;
@@ -63,12 +69,12 @@ body {
 }
 
 #contact {
-  position: absolute;
   top: 100px;
   width: 69px;
   height: 91px;
-  right: 100px;
+  right: 3%;
   text-align: center;
+  position: fixed;
 }
 
 #contact-main {
@@ -104,11 +110,8 @@ body {
 #nav {
   display: inline-block;
 
-  position: absolute;
-  width: 1440px;
+  position: fixed;
   height: 100px;
-  left: 50%;
-  transform: translateX(-50%);
   top: 350px;
 
   font-style: normal;
@@ -132,10 +135,15 @@ body {
 #content {
   position: absolute;
   top: 350px;
-  left: 500px;
+  /* left: 500px; */
+  left:30%;
   text-align: center;
   width: 750px;
   height: auto;
+}
+
+.blend-mode{
+  mix-blend-mode: exclusion;
 }
 
 #vector7 {
@@ -161,6 +169,12 @@ body {
 
   border-radius: 60px;
   transform: rotate(15.03deg);
+}
+
+#main-img:hover {
+  filter: drop-shadow(0px 0px 53.8926px #1670A3);
+  transform: matrix(0.97, 0.24, -0.24, 0.97, 0, 0);
+  transition: transform 300ms ease-out 0s;
 }
 
 #intro {
@@ -260,12 +274,20 @@ body {
     rgba(196, 196, 196, 0) 100%
   );
 }
+
+.vc-container {
+  border: none !important;
+  font-family: "Pretendard Variable" !important;
+}
+
+.project-start {
+  display: flex;
+}
 .projects-status {
   font-weight: 600;
   font-size: 20px;
   display: inline;
   float: left;
-  height: 700px;
 }
 
 .projects-wrap {
@@ -273,6 +295,12 @@ body {
   width: 275px;
   height: 300px;
   margin: 0 32px 0 32px;
+}
+
+.projects-list {
+  float: right;
+  display: inline;
+  width: 680px;
 }
 
 .projects-if,
@@ -283,7 +311,6 @@ body {
 }
 
 .project-title {
-  font-family: Pretendard Variable;
   font-size: 17px;
   font-weight: 600;
   line-height: 28px;
@@ -317,7 +344,6 @@ body {
   order: 4;
   flex-grow: 0;
 
-  font-family: Pretendard Variable;
   font-size: 14px;
   font-weight: 700;
   line-height: 14px;
@@ -348,7 +374,6 @@ body {
   order: 5;
   flex-grow: 0;
 
-  font-family: "Pretendard Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -370,16 +395,15 @@ body {
 }
 
 .item-title {
-  font-family: Pretendard Variable;
   font-size: 32px;
   font-weight: 600;
   line-height: 42px;
   letter-spacing: -0.01em;
   text-align: left;
+  margin-bottom: 4px !important;
 }
 
 .item-time-start {
-  font-family: Pretendard Variable;
   font-size: 32px;
   font-weight: 600;
   line-height: 42px;
@@ -388,17 +412,16 @@ body {
   margin-right: 5px;
 }
 .item-time-end {
-  font-family: Pretendard Variable;
   font-size: 32px;
   font-weight: 600;
   line-height: 42px;
   letter-spacing: -0.01em;
   text-align: left;
   margin-left: 5px;
+  margin-bottom: 10px !important;
 }
 
 .detail-time-start {
-  font-family: Pretendard Variable;
   font-size: 22px;
   font-weight: 600;
   line-height: 22px;
@@ -408,7 +431,6 @@ body {
   margin-bottom: 12px;
 }
 .detail-time-end {
-  font-family: Pretendard Variable;
   font-size: 22px;
   font-weight: 600;
   line-height: 22px;
@@ -418,7 +440,6 @@ body {
 }
 
 .detail-place {
-  font-family: Pretendard Variable;
   font-size: 22px;
   font-weight: 600;
   line-height: 22px;
@@ -429,7 +450,6 @@ body {
 }
 
 .detail-contents {
-  font-family: Pretendard Variable;
   font-size: 18px;
   font-weight: 600;
   line-height: 27px;
@@ -440,7 +460,6 @@ body {
 .detail-link {
   margin-left: 32px;
   margin-bottom: 40px;
-  font-family: Pretendard Variable;
   font-size: 22px;
   font-weight: 600;
   line-height: 22px;
@@ -450,7 +469,6 @@ body {
 }
 
 .detail_text {
-  font-family: Pretendard Variable;
   font-size: 22px;
   font-weight: 600;
   line-height: 22px;
@@ -487,8 +505,11 @@ body {
     display: none;
   }
   #koldsleep {
-    margin-top: 37px;
-    font-family: Pretendard Variable;
+    display: none;
+  }
+  #koldsleep_mobile {
+    display: block;
+    margin-top: 30px;
     font-weight: 600;
     font-size: 93px;
     line-height: 70%;
@@ -497,9 +518,8 @@ body {
   }
   #mystery_mobile {
     display: block;
-    top: 105px;
+    margin-top: 10px;
     margin-left: 4px;
-    font-family: Pretendard Variable;
     font-size: 9.8px;
     font-weight: 600;
     line-height: 11px;
@@ -511,15 +531,16 @@ body {
   }
   #nav_mobile {
     display: block;
-    position: relative;
-    top: 150px;
+    position: fixed;
+    width: 100vw;
     border-top: solid 1px #1d1d1f;
-    font-family: Pretendard Variable;
     font-size: 12px;
     font-weight: 600;
     line-height: 12px;
     letter-spacing: -0.01em;
+    margin-top: 10px;
     padding-top: 5px;
+    top: 150px;
     text-align: center;
   }
 
@@ -536,12 +557,11 @@ body {
     left: 8px;
     padding-bottom: 20px;
     top: 230px;
-    width: 98%;
+    width: 96%;
     height: auto;
   }
 
   #intro-head {
-    font-family: Pretendard Variable;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
@@ -550,7 +570,6 @@ body {
   }
 
   #intro-hardware {
-    font-family: Pretendard Variable;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
@@ -564,7 +583,6 @@ body {
 
   #intro-software{
     left:0;
-    font-family: Pretendard Variable;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
@@ -583,7 +601,6 @@ body {
   }
 
   #intro-textroad {
-    font-family: Pretendard Variable;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
@@ -611,14 +628,23 @@ body {
     border-radius: 24px;
     transform: rotate(0deg);
   }
+
+  .project-start {
+    display: block;
+  }
+
   .projects-status {
     height: 20px;
-    font-family: Pretendard Variable;
     font-size: 20px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: -0.01em;
     text-align: left;
+    float: none;
+  }
+
+  .projects-list {
+    float: none;
   }
 
   .projects-wrap {
@@ -633,7 +659,6 @@ body {
     width: 100vw;
   }
   .project-title {
-    font-family: Pretendard Variable;
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
@@ -651,7 +676,6 @@ body {
   }
 
   .item-title, .item-time-start, .item-time-end  {
-    font-family: Pretendard Variable;
     font-size: 20px;
     font-weight: 600;
     line-height: 20px;
@@ -660,7 +684,6 @@ body {
   }
 
   .detail_text, .detail-time-start, .detail-time-end, .detail-place, .detail-link, .detail-contents {
-    font-family: Pretendard Variable;
     font-size: 18px;
     font-weight: 600;
     line-height: 27px;
