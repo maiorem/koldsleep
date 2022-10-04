@@ -28,6 +28,7 @@ urlpatterns = [
     path('project/', include('project.urls')),
     path('dreamnetwork/', include('keywordList.urls')),
     path('dreamnetwork/list/', include('dream_list.urls')),
+    path('webzine/', include('webzine.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

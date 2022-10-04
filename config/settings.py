@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'keywordList.apps.KeywordlistConfig',
     'intro.apps.IntroConfig',
     'project.apps.ProjectConfig',
+    'webzine.apps.WebzineConfig',
     'rest_framework',
     'bootstrap4',
     'corsheaders', # CORS 관련 추가
